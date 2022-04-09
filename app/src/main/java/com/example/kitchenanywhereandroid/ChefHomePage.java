@@ -16,29 +16,28 @@ public class ChefHomePage extends AppCompatActivity implements BottomNavigationV
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chef_home_page);
-
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
         bottomNavigationView.setOnNavigationItemSelectedListener(this);
-        bottomNavigationView.setSelectedItemId(R.id.profile);
+        bottomNavigationView.setSelectedItemId(R.id.home);
     }
 
-    ChefHomePageFrgament ChefHomePageFrgament = new ChefHomePageFrgament();
-    ChefProfile ChefProfile = new ChefProfile();
-    ChefSettings ChefSettings = new ChefSettings();
+    ChefHomePageFragment ChefHomePageFragment = new ChefHomePageFragment();
+    ChefProfileFragment ChefProfileFragment = new ChefProfileFragment();
+    ChefSettingsFragment ChefSettingsFragment = new ChefSettingsFragment();
 
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
         switch (item.getItemId()) {
             case R.id.profile:
-                getSupportFragmentManager().beginTransaction().replace(R.id.home, ChefHomePageFrgament).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.flFragment, ChefProfileFragment).commit();
                 return true;
 
             case R.id.home:
-                getSupportFragmentManager().beginTransaction().replace(R.id.profile, ChefProfile).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.flFragment, ChefHomePageFragment).commit();
                 return true;
 
             case R.id.settings:
-                getSupportFragmentManager().beginTransaction().replace(R.id.settings, ChefSettings).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.flFragment, ChefSettingsFragment).commit();
                 return true;
         }
         return false;

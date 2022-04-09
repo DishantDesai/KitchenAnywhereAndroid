@@ -5,7 +5,9 @@
       <map>
         <entry key="..\:/Users/2093971/AndroidStudioProjects/KitchenAnywhereAndroid/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.2595" />
         <entry key="..\:/Users/2093971/AndroidStudioProjects/KitchenAnywhereAndroid/app/src/main/res/drawable/ic_launcher_background.xml" value="0.2265" />
+        <entry key="..\:/Users/2093971/AndroidStudioProjects/KitchenAnywhereAndroid/app/src/main/res/layout/activity_chef_home_page.xml" value="0.22826086956521738" />
         <entry key="..\:/Users/2093971/AndroidStudioProjects/KitchenAnywhereAndroid/app/src/main/res/layout/activity_user_home_page.xml" value="0.22826086956521738" />
+        <entry key="..\:/Users/2093971/AndroidStudioProjects/KitchenAnywhereAndroid/app/src/main/res/layout/chef_home_listview.xml" value="0.22826086956521738" />
         <entry key="..\:/Users/2093971/AndroidStudioProjects/KitchenAnywhereAndroid/app/src/main/res/layout/fragment_chef_home_page_frgament.xml" value="0.22826086956521738" />
         <entry key="..\:/Users/2093971/AndroidStudioProjects/KitchenAnywhereAndroid/app/src/main/res/layout/fragment_chef_profile.xml" value="0.22826086956521738" />
         <entry key="..\:/Users/2093971/AndroidStudioProjects/KitchenAnywhereAndroid/app/src/main/res/layout/fragment_chef_settings.xml" value="0.22826086956521738" />

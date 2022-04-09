@@ -8,9 +8,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-public class ChefHomePageFrgament extends Fragment {
+public class ChefSettingsFragment extends Fragment {
 
-    public ChefHomePageFrgament() {
+    public ChefSettingsFragment() {
         // Required empty public constructor
     }
 
@@ -18,6 +18,6 @@ public class ChefHomePageFrgament extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_chef_home_page_frgament, container, false);
+        return inflater.inflate(R.layout.fragment_chef_settings_fragment, container, false);
     }
 }
