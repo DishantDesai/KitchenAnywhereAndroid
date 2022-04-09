@@ -9,7 +9,7 @@ import android.widget.Button;
 import com.google.android.material.textfield.TextInputLayout;
 
 public class Signup extends AppCompatActivity {
-    TextInputLayout fullName,email,phoneNo,password,address,postalCode;
+    TextInputLayout fullName,email,phoneNo,password,address,postalCode,confirmPassword;
     Button regBtn,regToLoginBtn;
 
 
@@ -20,7 +20,8 @@ public class Signup extends AppCompatActivity {
 
         fullName = findViewById(R.id.full_name);
         email = findViewById(R.id.email);
-        password= findViewById(R.id.password);
+        password= findViewById(R.id.et_password);
+        confirmPassword= findViewById(R.id.confirm_password);
         phoneNo = findViewById(R.id.phone_number);
         address = findViewById(R.id.address);
         postalCode = findViewById(R.id.postal_code);
@@ -48,8 +49,7 @@ public class Signup extends AppCompatActivity {
     }
     private Boolean isEmailValid(){
         String emailVal= email.getEditText().getText().toString();
-        String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.}+[a-z]+";
-        System.out.println("emailVal" + emailVal + emailVal.matches(emailPattern));
+        String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
         if(emailVal.isEmpty()){
             email.setError("Field cannot be empty!");
             return false;
@@ -73,15 +73,36 @@ public class Signup extends AppCompatActivity {
     }
     private Boolean isPasswordValid(){
         String passwordVal = password.getEditText().getText().toString();
-        String passwordPattern = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\\\S+$).{4,}$";
+        String passwordPattern = "^" +
+                "(?=.*[0-9])" +
+                "(?=.*[a-z])" +
+                "(?=.*[A-Z])" +
+                "(?=.*[@#$%^&+=])" +
+                "(?=\\S+$)" +
+                ".{4,}" +
+                "$";
         if(passwordVal.isEmpty()){
             password.setError("Field cannot be empty!");
             return false;
         }else if(!passwordVal.matches(passwordPattern)){
-            email.setError("Password is too week");
+            password.setError("Password is too week");
             return false;
         }else{
             password.setError(null);
+            return true;
+        }
+    }
+    private Boolean isConfirmPasswordValid(){
+        String passwordVal = password.getEditText().getText().toString();
+        String confPasswordVal = confirmPassword.getEditText().getText().toString();
+        if(confPasswordVal.isEmpty()){
+            confirmPassword.setError("Field cannot be empty!");
+            return false;
+        }else if(!confPasswordVal.equals(passwordVal)){
+            confirmPassword.setError("Confirm password must match password");
+            return false;
+        }else{
+            confirmPassword.setError(null);
             return true;
         }
     }
@@ -107,7 +128,7 @@ public class Signup extends AppCompatActivity {
     }
     public void registerUser(View view){
         try {
-            if(!isNameValid() | !isEmailValid() | !isPhoneNoValid() | !isPasswordValid() | !isAddressValid() | !isPostalCodeValid()){
+            if(!isNameValid() | !isEmailValid() | !isPhoneNoValid() | !isPasswordValid() | !isConfirmPasswordValid() | !isAddressValid() | !isPostalCodeValid()){
                 return;
             }
         }catch (Exception e){
