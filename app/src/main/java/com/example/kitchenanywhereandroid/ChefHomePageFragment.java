@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -45,45 +46,50 @@ public class ChefHomePageFragment extends Fragment {
                 progressBar.setVisibility(View.INVISIBLE);
 
                 ListView listView;
-                String countryNames[] = {
-                        "India",
-                        "China",
-                        "Nepal",
-                        "Bhutan"
+                String dishNames[] = {
+                        "Paneer Tikka Masala",
+                        "Paneer bhurji",
+                        "Dhosa",
+                        "Bhaji Pav",
+                        "Paneer Tikka Masala",
+                        "Paneer bhurji",
+                        "Dhosa",
+                        "Bhaji Pav",
+                        "Paneer Tikka Masala",
+                        "Paneer bhurji",
+                        "Dhosa",
+                        "Bhaji Pav"
                 };
 
-                String capitalNames[] = {
-                        "Delhi",
-                        "Beijing",
-                        "Kathmandu",
-                        "Thimphu"
+                String dishSubtitle[] = {
+                        "spice panjabi dish",
+                        "mid spice panjabi dish",
+                        "south indian dish",
+                        "indian dish",
+                        "spice panjabi dish",
+                        "mid spice panjabi dish",
+                        "south indian dish",
+                        "indian dish",
+                        "spice panjabi dish",
+                        "mid spice panjabi dish",
+                        "south indian dish",
+                        "indian dish"
                 };
 
-                Integer imageid[] = {
-                        R.drawable.splash_logo,
-                        R.drawable.splash_logo,
-                        R.drawable.splash_logo,
-                        R.drawable.splash_logo
-
+                String dishimageid[] = {
+                        "https://www.thespruceeats.com/thmb/UMT0Jx65qwNd0wxGdPk8nED3FBo=/2000x1500/filters:fill(auto,1)/GettyImages-1042998066-518ca1d7f2804eb09039e9e42e91667c.jpg",
+                        "https://www.eatthis.com/wp-content/uploads/sites/4/2019/06/deep-dish-pizza-chicago.jpg",
+                        "https://insanelygoodrecipes.com/wp-content/uploads/2020/09/Indian-Dish-Malai-Kofta.png",
+                        "https://us.123rf.com/450wm/fahrwasser/fahrwasser1710/fahrwasser171000119/87425544-fried-rice-with-vegetables-and-steamed-broccoli.jpg?ver=6"
                 };
-//
-//        String[] mobileArray = {"Android","IPhone","WindowsMobile","Blackberry",
-//                "WebOS","Ubuntu","Windows7","Max OS X"};
-//
-//        listView = view.findViewById(R.id.DishList);
-//
-//        ArrayAdapter<String> adapter=new ArrayAdapter<>(getActivity(), android.R.layout.simple_list_item_1 ,mobileArray);
-//        listView.setAdapter(adapter);
-//
-//        d_list.setVisibility(View.VISIBLE);
 
-
-
-                ListView dishList=(ListView)view.findViewById(android.R.id.list);
+                ListView dishList=(ListView)view.findViewById(R.id.DishList);
 
                 // For populating list data
-                customDistListAdapter customCountryList = new customDistListAdapter(getActivity(), countryNames, capitalNames, imageid);
+                customDistListAdapter customCountryList = new customDistListAdapter(getActivity(), dishNames, dishSubtitle, dishimageid);
                 dishList.setAdapter(customCountryList);
+
+
 
             }
         },4000);
