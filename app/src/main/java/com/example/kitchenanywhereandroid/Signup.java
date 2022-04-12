@@ -2,6 +2,7 @@ package com.example.kitchenanywhereandroid;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -35,6 +36,14 @@ public class Signup extends AppCompatActivity {
             }
         });
 
+        findViewById(R.id.reg_to_login_btn).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Signup.this,login.class);
+                startActivity(intent);
+                finish();
+            }
+        });
 
     }
     private Boolean isNameValid(){
