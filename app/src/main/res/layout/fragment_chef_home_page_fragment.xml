@@ -21,25 +21,27 @@
         android:id="@+id/DishList"
         android:layout_width="412dp"
         android:layout_height="624dp"
+        android:layout_marginBottom="44dp"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@id/textView"
+        app:layout_constraintTop_toBottomOf="@id/textView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
-        app:layout_constraintVertical_bias="0.68"
-        tools:visibility="invisible" />
+        tools:visibility="invisible"
+        android:layout_marginTop="10dp"/>
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="194dp"
-        android:layout_height="29dp"
-        android:layout_marginTop="28dp"
+        android:layout_width="366dp"
+        android:layout_height="26dp"
+        android:layout_marginTop="65dp"
         android:text="Your Dish List"
         android:textColor="@color/black"
         android:textSize="20sp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/DishList"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.073"
+        app:layout_constraintHorizontal_bias="0.355"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.113" />
 </androidx.constraintlayout.widget.ConstraintLayout>
