@@ -33,16 +33,26 @@ public class login extends AppCompatActivity {
                 String password = pass.getText().toString().trim();
 
 
-                if (TextUtils.isEmpty(password)) {
-                    pass.setError("Please enter Password");
-                    pass.requestFocus();
-                }
 
-                if (TextUtils.isEmpty(emailAddress)) {
-                    email.setError("Please enter User Name or Email");
-                    email.requestFocus();
-                }
 
+                if(TextUtils.isEmpty(password) || TextUtils.isEmpty(emailAddress)) {
+
+                    if (TextUtils.isEmpty(password)) {
+                        pass.setError("Please enter Password");
+                        pass.requestFocus();
+                    }
+
+                    if (TextUtils.isEmpty(emailAddress)) {
+                        email.setError("Please enter User Name or Email");
+                        email.requestFocus();
+                    }
+                }else
+                {
+
+                    Intent intent = new Intent(login.this,ChefHomePage.class);
+                    startActivity(intent);
+                    finish();
+                }
 
 
             }
