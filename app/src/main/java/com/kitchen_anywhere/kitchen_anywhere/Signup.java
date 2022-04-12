@@ -1,18 +1,40 @@
-package com.example.kitchenanywhereandroid;
+package com.kitchen_anywhere.kitchen_anywhere;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputLayout;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class Signup extends AppCompatActivity {
+    public static final String TAG = "TAG";
     TextInputLayout fullName,email,phoneNo,password,address,postalCode,confirmPassword;
+    RadioGroup userType;
     Button regBtn,regToLoginBtn;
 
-
+    FirebaseAuth mAuth;
+    FirebaseFirestore fStore;
+    String userID;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,8 +47,12 @@ public class Signup extends AppCompatActivity {
         phoneNo = findViewById(R.id.phone_number);
         address = findViewById(R.id.address);
         postalCode = findViewById(R.id.postal_code);
+        userType = (RadioGroup) findViewById(R.id.userType);
         regBtn = findViewById(R.id.register_btn);
         regToLoginBtn = findViewById(R.id.reg_to_login_btn);
+
+        mAuth = FirebaseAuth.getInstance();
+        fStore = FirebaseFirestore.getInstance();
 
         regBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -35,6 +61,14 @@ public class Signup extends AppCompatActivity {
             }
         });
 
+        findViewById(R.id.reg_to_login_btn).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Signup.this,login.class);
+                startActivity(intent);
+                finish();
+            }
+        });
 
     }
     private Boolean isNameValid(){
@@ -127,10 +161,52 @@ public class Signup extends AppCompatActivity {
         }
     }
     public void registerUser(View view){
+
+        String fullnameVal = fullName.getEditText().getText().toString();
+        String emailVal= email.getEditText().getText().toString();
+        String passwordVal = password.getEditText().getText().toString();
+        String addressVal = address.getEditText().getText().toString();
+        String postalCodeVal = postalCode.getEditText().getText().toString();
+        String phoneVal = phoneNo.getEditText().getText().toString();
+        int userTypeIdVal = userType.getCheckedRadioButtonId();
+        String userTypeVal = (String) ((RadioButton) findViewById(userTypeIdVal)).getText();
         try {
             if(!isNameValid() | !isEmailValid() | !isPhoneNoValid() | !isPasswordValid() | !isConfirmPasswordValid() | !isAddressValid() | !isPostalCodeValid()){
                 return;
             }
+            mAuth.createUserWithEmailAndPassword(emailVal,passwordVal).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                @Override
+                public void onComplete(@NonNull Task<AuthResult> task) {
+                    if (task.isSuccessful()){
+                        userID = mAuth.getCurrentUser().getUid();
+                        DocumentReference documentReference = fStore.collection("User").document(userID);
+                        Map<String,Object> user = new HashMap<>();
+                        user.put("fullName",fullnameVal);
+                        user.put("email",emailVal);
+                        user.put("phoneNo",phoneVal);
+                        user.put("address",addressVal);
+                        user.put("postal_code",postalCodeVal);
+                        user.put("isChef", userTypeVal.toLowerCase() == "chef");
+                        user.put("userID",userID);
+                        documentReference.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void aVoid) {
+                                Log.d(TAG, "onSuccess: user Profile is created for "+ userID);
+                            }
+                        }).addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                Log.d(TAG, "onFailure: " + e.toString());
+                            }
+                        });
+                        Toast.makeText(Signup.this, "User registered successfully", Toast.LENGTH_SHORT).show();
+                        startActivity(new Intent(Signup.this, login.class));
+                    }else{
+                        Toast.makeText(Signup.this, "Registration Error: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                }
+            });
+
         }catch (Exception e){
             System.out.println(e);
         }
