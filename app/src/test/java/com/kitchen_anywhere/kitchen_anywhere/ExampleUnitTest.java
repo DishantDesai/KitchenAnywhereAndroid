@@ -1,4 +1,4 @@
-package com.example.kitchenanywhereandroid;
+package com.kitchen_anywhere.kitchen_anywhere;
 
 import org.junit.Test;
 

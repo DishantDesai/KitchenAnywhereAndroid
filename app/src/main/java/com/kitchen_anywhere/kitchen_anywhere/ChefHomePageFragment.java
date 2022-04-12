@@ -1,6 +1,5 @@
-package com.example.kitchenanywhereandroid;
+package com.kitchen_anywhere.kitchen_anywhere;
 
-import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -11,13 +10,8 @@ import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.ProgressBar;
-import android.widget.Toast;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class ChefHomePageFragment extends Fragment {
 
