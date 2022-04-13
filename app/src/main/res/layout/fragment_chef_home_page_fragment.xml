@@ -27,8 +27,23 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView"
         app:layout_constraintVertical_bias="0.68"
-        tools:visibility="invisible" />
+        tools:visibility="invisible" >
 
+
+    </ListView>
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/add_dish"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|right"
+        android:layout_margin="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:contentDescription="@string/add_dish"
+        app:tint="@android:color/white"
+        android:text="@string/add_dish"
+        app:srcCompat="@drawable/ic_baseline_add_24"
+        />
     <TextView
         android:id="@+id/textView"
         android:layout_width="194dp"
@@ -42,4 +57,5 @@
         app:layout_constraintHorizontal_bias="0.073"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
