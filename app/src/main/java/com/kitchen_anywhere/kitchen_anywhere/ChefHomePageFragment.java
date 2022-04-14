@@ -1,5 +1,6 @@
 package com.kitchen_anywhere.kitchen_anywhere;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -13,6 +14,8 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
 public class ChefHomePageFragment extends Fragment {
 
     public ChefHomePageFragment() {
@@ -21,6 +24,7 @@ public class ChefHomePageFragment extends Fragment {
 
      ProgressBar progressBar;
     ListView d_list;
+    FloatingActionButton addDish;
     public ListView listView ;
 
     public Handler h;
@@ -33,7 +37,14 @@ public class ChefHomePageFragment extends Fragment {
         progressBar = (ProgressBar)view.findViewById(R.id.loading);
         d_list = (ListView) view.findViewById(R.id.DishList);
         listView = view.findViewById(R.id.DishList);
-
+        addDish = view.findViewById(R.id.add_dish);
+        addDish.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(),AddDish.class);
+                startActivity(intent);
+            }
+        });
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {

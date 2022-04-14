@@ -12,6 +12,8 @@
         <entry key="..\:/cegep/MAD_Project_Block4/KitchenAnywhereAndroid/app/src/main/res/layout/fragment_chef_profile_fragment.xml" value="0.11548913043478261" />
         <entry key="..\:/cegep/MAD_Project_Block4/KitchenAnywhereAndroid/app/src/main/res/layout/fragment_chef_settings_fragment.xml" value="0.11548913043478261" />
         <entry key="app/src/main/res/drawable/ic_baseline_add_24.xml" value="0.1395" />
+        <entry key="app/src/main/res/drawable/ic_baseline_fastfood_24.xml" value="0.147" />
+        <entry key="app/src/main/res/layout/activity_add_dish.xml" value="0.15476190476190477" />
         <entry key="app/src/main/res/layout/activity_chef_home_page.xml" value="0.15476190476190477" />
         <entry key="app/src/main/res/layout/activity_signup.xml" value="0.1609375" />
         <entry key="app/src/main/res/layout/chef_home_listview.xml" value="0.18070652173913043" />

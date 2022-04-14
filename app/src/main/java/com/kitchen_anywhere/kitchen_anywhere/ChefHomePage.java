@@ -14,22 +14,18 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 public class ChefHomePage extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener{
 
     BottomNavigationView bottomNavigationView;
-    FloatingActionButton addDish;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().hide();
         setContentView(R.layout.activity_chef_home_page);
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
-        addDish = findViewById(R.id.add_dish);
+
         bottomNavigationView.setOnNavigationItemSelectedListener(this);
         bottomNavigationView.setSelectedItemId(R.id.home);
 
-        addDish.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-//                Intent intent = new Intent(ChefHomePage.this,Signup.class)
-            }
-        });
+
     }
 
     ChefHomePageFragment ChefHomePageFragment = new ChefHomePageFragment();
