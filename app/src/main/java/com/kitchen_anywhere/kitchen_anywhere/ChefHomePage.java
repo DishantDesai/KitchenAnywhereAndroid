@@ -1,12 +1,15 @@
-package com.example.kitchenanywhereandroid;
+package com.kitchen_anywhere.kitchen_anywhere;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class ChefHomePage extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener{
 
@@ -15,10 +18,14 @@ public class ChefHomePage extends AppCompatActivity implements BottomNavigationV
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().hide();
         setContentView(R.layout.activity_chef_home_page);
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
+
         bottomNavigationView.setOnNavigationItemSelectedListener(this);
         bottomNavigationView.setSelectedItemId(R.id.home);
+
+
     }
 
     ChefHomePageFragment ChefHomePageFragment = new ChefHomePageFragment();
@@ -42,7 +49,5 @@ public class ChefHomePage extends AppCompatActivity implements BottomNavigationV
         }
         return false;
     }
-
-
 
 }

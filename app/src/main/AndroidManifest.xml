@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.kitchenanywhereandroid">
+    package="com.kitchen_anywhere.kitchen_anywhere">
+
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -10,7 +12,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.KitchenAnywhereAndroid">
         <activity
+            android:name=".AddDish"
+            android:exported="false" />
+        <activity
             android:name=".ChefHomePage"
+            android:exported="false" />
+        <activity
+            android:name=".login"
             android:exported="false" />
         <activity
             android:name=".Signup"
