@@ -1,9 +1,6 @@
-package com.example.kitchenanywhereandroid;
+package com.kitchen_anywhere.kitchen_anywhere;
 
 import android.app.Activity;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,10 +8,6 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.URL;
 
 public class customDistListAdapter  extends ArrayAdapter {
     private String[] dishNames;

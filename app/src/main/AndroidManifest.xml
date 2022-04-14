@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.kitchenanywhereandroid">
-
+    package="com.kitchen_anywhere.kitchen_anywhere">
+    <uses-permission android:name="android.permission.INTERNET"/>
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -13,19 +13,19 @@
             android:name=".user_Profile"
             android:exported="false" />
         <activity
-            android:name=".ChefHomePage"
+            android:name="com.kitchen_anywhere.kitchen_anywhere.ChefHomePage"
             android:exported="false" />
         <activity
-            android:name=".login"
+            android:name="com.kitchen_anywhere.kitchen_anywhere.login"
             android:exported="false" />
         <activity
-            android:name=".Signup"
+            android:name="com.kitchen_anywhere.kitchen_anywhere.Signup"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name="com.kitchen_anywhere.kitchen_anywhere.MainActivity"
             android:exported="false" />
         <activity
-            android:name=".SplashScreenActivity"
+            android:name="com.kitchen_anywhere.kitchen_anywhere.SplashScreenActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
