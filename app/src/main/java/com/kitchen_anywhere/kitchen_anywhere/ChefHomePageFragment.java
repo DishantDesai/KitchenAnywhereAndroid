@@ -15,6 +15,7 @@ import android.widget.ListView;
 import android.widget.ProgressBar;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.kitchen_anywhere.kitchen_anywhere.adapter.customDistListAdapter;
 
 public class ChefHomePageFragment extends Fragment {
 
