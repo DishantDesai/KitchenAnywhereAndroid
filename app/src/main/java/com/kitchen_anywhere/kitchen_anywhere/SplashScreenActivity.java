@@ -28,7 +28,7 @@ public class SplashScreenActivity extends AppCompatActivity {
                 if (user == null){
                     startActivity(new Intent(SplashScreenActivity.this, login.class));
                 }else{
-                    startActivity(new Intent(SplashScreenActivity.this, ChefHomePage.class));
+                    startActivity(new Intent(SplashScreenActivity.this, FoodieHomePage.class));
                 }
                 finish();
 
