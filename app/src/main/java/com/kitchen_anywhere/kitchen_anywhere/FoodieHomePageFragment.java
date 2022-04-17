@@ -2,11 +2,6 @@ package com.kitchen_anywhere.kitchen_anywhere;
 
 import android.content.Intent;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-
 import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,11 +9,15 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-public class ChefHomePageFragment extends Fragment {
+public class FoodieHomePageFragment extends Fragment {
 
-    public ChefHomePageFragment() {
+    public FoodieHomePageFragment() {
         // Required empty public constructor
     }
 
@@ -33,18 +32,11 @@ public class ChefHomePageFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.fragment_chef_home_page_fragment, container, false);
-        progressBar = (ProgressBar)view.findViewById(R.id.loading);
-        d_list = (ListView) view.findViewById(R.id.DishList);
-        listView = view.findViewById(R.id.DishList);
-        addDish = view.findViewById(R.id.add_dish);
-        addDish.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getActivity(),AddDish.class);
-                startActivity(intent);
-            }
-        });
+        View view = inflater.inflate(R.layout.fragment_foodie_home_page_fragment, container, false);
+        progressBar = (ProgressBar)view.findViewById(R.id.foodie_loading);
+        d_list = (ListView) view.findViewById(R.id.foodie_DishList);
+        listView = view.findViewById(R.id.foodie_DishList);
+
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -88,11 +80,11 @@ public class ChefHomePageFragment extends Fragment {
                         "https://us.123rf.com/450wm/fahrwasser/fahrwasser1710/fahrwasser171000119/87425544-fried-rice-with-vegetables-and-steamed-broccoli.jpg?ver=6"
                 };
 
-                ListView dishList=(ListView)view.findViewById(R.id.DishList);
+                ListView dishList=(ListView)view.findViewById(R.id.foodie_DishList);
 
                 // For populating list data
-                ChefcustomDistListAdapter customCountryList = new ChefcustomDistListAdapter(getActivity(), dishNames, dishSubtitle, dishimageid);
-                dishList.setAdapter(customCountryList);
+                FoodiecustomDistListAdapter foodList = new FoodiecustomDistListAdapter(getActivity(), dishNames, dishSubtitle, dishimageid);
+                dishList.setAdapter(foodList);
 
 
 

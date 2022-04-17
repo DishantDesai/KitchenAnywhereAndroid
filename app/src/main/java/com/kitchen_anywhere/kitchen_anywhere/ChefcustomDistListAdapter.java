@@ -9,13 +9,13 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class customDistListAdapter  extends ArrayAdapter {
+public class ChefcustomDistListAdapter extends ArrayAdapter {
     private String[] dishNames;
     private String[] dishSubtitle;
     private String[] dishimageid;
     private Activity context;
 
-    public customDistListAdapter(Activity context, String[] dishNames, String[] dishSubtitle, String[] dishimageid) {
+    public ChefcustomDistListAdapter(Activity context, String[] dishNames, String[] dishSubtitle, String[] dishimageid) {
         super(context, R.layout.chef_home_listview, dishNames);
         this.context = context;
         this.dishNames = dishNames;

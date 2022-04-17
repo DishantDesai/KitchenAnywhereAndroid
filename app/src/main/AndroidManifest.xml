@@ -18,6 +18,9 @@
             android:name=".ChefHomePage"
             android:exported="false" />
         <activity
+            android:name=".FoodieHomePage"
+            android:exported="false" />
+        <activity
             android:name=".login"
             android:exported="false" />
         <activity
