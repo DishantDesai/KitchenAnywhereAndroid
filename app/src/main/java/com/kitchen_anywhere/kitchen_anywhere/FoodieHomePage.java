@@ -12,7 +12,7 @@ public class FoodieHomePage extends AppCompatActivity implements BottomNavigatio
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getSupportActionBar().hide();
+//        getSupportActionBar().hide();
         setContentView(R.layout.activity_foodie_home_page);
         bottomNavigationView = findViewById(R.id.foodie_bottomNavigationView);
 

@@ -13,10 +13,15 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.denzcoskun.imageslider.ImageSlider;
+import com.denzcoskun.imageslider.constants.ScaleTypes;
+import com.denzcoskun.imageslider.models.SlideModel;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-public class FoodieHomePageFragment extends Fragment {
+import java.util.ArrayList;
 
+public class FoodieHomePageFragment extends Fragment {
+    ImageSlider imageSlider;
     public FoodieHomePageFragment() {
         // Required empty public constructor
     }
@@ -36,7 +41,13 @@ public class FoodieHomePageFragment extends Fragment {
         progressBar = (ProgressBar)view.findViewById(R.id.foodie_loading);
         d_list = (ListView) view.findViewById(R.id.foodie_DishList);
         listView = view.findViewById(R.id.foodie_DishList);
+        imageSlider = view.findViewById(R.id.image_slider);
 
+        ArrayList<SlideModel> images =  new ArrayList<>();
+        images.add(new SlideModel("https://www.wingsworldcuisine.ie/wp-content/uploads/2022/02/W2_Offer-Early-Bird-Offer-01012022.jpg",null));
+        images.add(new SlideModel("https://www.wingsworldcuisine.ie/wp-content/uploads/2021/11/Wings-dubling-student-offer_19112021.jpg",null));
+        images.add(new SlideModel("https://www.french-waterways.com/waterpress/wp-content/imagez/Copy-of-FW_French-dishes-1000x563.png",null));
+        imageSlider.setImageList(images, ScaleTypes.FIT);
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
