@@ -1,8 +1,13 @@
 package com.kitchen_anywhere.kitchen_anywhere;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.LinearLayout;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class FoodieHomePage extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener{
@@ -18,9 +23,8 @@ public class FoodieHomePage extends AppCompatActivity implements BottomNavigatio
 
         bottomNavigationView.setOnNavigationItemSelectedListener(this);
         bottomNavigationView.setSelectedItemId(R.id.foodie_home);
-
-
     }
+
 
     FoodieHomePageFragment FoodieHomePageFragment = new FoodieHomePageFragment();
     FoodieProfileFragment FoodieProfileFragment = new FoodieProfileFragment();

@@ -29,9 +29,9 @@ public class FoodiecustomDistListAdapter extends ArrayAdapter {
         LayoutInflater inflater = context.getLayoutInflater();
         if(convertView==null)
             row = inflater.inflate(R.layout.foodie_home_listview, null, true);
-        TextView textViewCountry = (TextView) row.findViewById(R.id.foodie_textViewCountry);
-        TextView textViewCapital = (TextView) row.findViewById(R.id.foodie_textViewCapital);
-        ImageView imageFlag = (ImageView) row.findViewById(R.id.foodie_imageViewFlag);
+        TextView textViewCountry = (TextView) row.findViewById(R.id.food_item_text_title);
+        TextView textViewCapital = (TextView) row.findViewById(R.id.food_item_text_description);
+        ImageView imageFlag = (ImageView) row.findViewById(R.id.food_item_image);
 
         textViewCountry.setText(dishNames[position]);
         textViewCapital.setText(dishSubtitle[position]);
