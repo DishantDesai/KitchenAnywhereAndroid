@@ -1,4 +1,4 @@
-package com.kitchen_anywhere.kitchen_anywhere;
+package com.kitchen_anywhere.kitchen_anywhere.adapter;
 
 import android.app.Activity;
 import android.view.LayoutInflater;
@@ -8,6 +8,8 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.kitchen_anywhere.kitchen_anywhere.R;
 
 public class customDistListAdapter  extends ArrayAdapter {
     private String[] dishNames;
@@ -57,7 +59,6 @@ public class customDistListAdapter  extends ArrayAdapter {
             public void onClick(View v)
             {
                 Toast.makeText(context,dishNames[position],Toast.LENGTH_SHORT);
-                System.out.println(dishNames[position]);
             }
         });
 //        Thread thread = new Thread(new Runnable(){

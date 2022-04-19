@@ -2,32 +2,32 @@ package com.kitchen_anywhere.kitchen_anywhere;
 
 import android.content.Intent;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
+import androidx.fragment.app.Fragment;
+
 import com.google.firebase.auth.FirebaseAuth;
-import com.kitchen_anywhere.kitchen_anywhere.adapter.customDistListAdapter;
 import com.kitchen_anywhere.kitchen_anywhere.adapter.settingListAdapter;
 
-public class ChefSettingsFragment extends Fragment {
+public class FoodieSettingsFragment extends Fragment {
     FirebaseAuth mAuth;
-    public ChefSettingsFragment() {
+    public ListView settingListView ;
+
+    public FoodieSettingsFragment() {
         // Required empty public constructor
     }
-    public ListView settingListView ;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_chef_settings_fragment, container, false);
+        View view = inflater.inflate(R.layout.fragment_foodie_settings_fragment, container, false);
         mAuth = FirebaseAuth.getInstance();
-        settingListView = view.findViewById(R.id.settings);
+        settingListView = view.findViewById(R.id.foodie_settings);
         String settingOptions[] = {
                 "Orders",
                 "Your favourite",

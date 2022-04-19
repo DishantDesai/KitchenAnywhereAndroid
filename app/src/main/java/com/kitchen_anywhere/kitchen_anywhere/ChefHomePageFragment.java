@@ -15,6 +15,7 @@ import android.widget.ListView;
 import android.widget.ProgressBar;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.kitchen_anywhere.kitchen_anywhere.adapter.customDistListAdapter;
 
 public class ChefHomePageFragment extends Fragment {
 
@@ -91,7 +92,7 @@ public class ChefHomePageFragment extends Fragment {
                 ListView dishList=(ListView)view.findViewById(R.id.DishList);
 
                 // For populating list data
-                customDistListAdapter customCountryList = new customDistListAdapter(getActivity(), dishNames, dishSubtitle, dishimageid);
+                ChefcustomDistListAdapter customCountryList = new ChefcustomDistListAdapter(getActivity(), dishNames, dishSubtitle, dishimageid);
                 dishList.setAdapter(customCountryList);
 
 

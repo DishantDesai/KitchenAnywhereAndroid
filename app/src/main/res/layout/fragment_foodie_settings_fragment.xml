@@ -5,10 +5,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ChefHomePage">
+    tools:context=".FoodieHomePage">
 
     <TextView
-        android:id="@+id/titleLable"
+        android:id="@+id/foodie_titleLable"
         android:layout_width="match_parent"
         android:layout_height="29dp"
         android:layout_marginTop="15dp"
@@ -23,18 +23,18 @@
         android:textAlignment="center"
         />
     <ListView
-        android:id="@+id/settings"
+        android:id="@+id/foodie_settings"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/titleLable"
+        app:layout_constraintTop_toBottomOf="@id/foodie_titleLable"
         app:layout_constraintVertical_bias="0"
         android:paddingTop="10dp"
         android:paddingHorizontal="20dp"
-        >
+        />
 
-    </ListView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
