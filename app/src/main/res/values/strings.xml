@@ -1,4 +1,7 @@
 <resources>
-    <string name="app_name">KitchenAnywhereAndroid</string>
-    <string name="make_dishes">Make Dishes</string>
+    <string name="app_name">Kitchen Anywhere</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="add_dish">Add Dish</string>
+    <string name="make_dishes">Add Dish</string>
 </resources>

@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".FoodieHomePage">
+
+<!--    <TextView-->
+<!--        android:id="@+id/title"-->
+<!--        android:layout_width="194dp"-->
+<!--        android:layout_height="29dp"-->
+<!--        android:layout_marginTop="28dp"-->
+<!--        android:text="Your Favourite Dish List"-->
+<!--        android:textColor="@color/black"-->
+<!--        android:textSize="20sp"-->
+<!--        android:textStyle="bold"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="0.073"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/image_slider" />-->
+    <com.denzcoskun.imageslider.ImageSlider
+        android:id="@+id/image_slider"
+        android:layout_width="match_parent"
+        android:layout_height="196dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:iss_auto_cycle="true"
+        app:iss_period="3000"
+        android:layout_marginTop="10dp"
+        android:layout_marginHorizontal="10dp"
+        app:iss_corner_radius="50"
+        />
+    <ProgressBar
+        android:id="@+id/foodie_loading"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:visibility="visible"
+        app:layout_constraintTop_toTopOf="@id/foodie_textView" />
+
+<!--    <ListView-->
+<!--        android:id="@+id/foodie_DishList"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="1.0"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/foodie_textView"-->
+<!--        app:layout_constraintVertical_bias="0"-->
+<!--        tools:visibility="invisible" >-->
+<!--    </ListView>-->
+
+    <TextView
+        android:id="@+id/foodie_textView"
+        android:layout_width="194dp"
+        android:layout_height="29dp"
+        android:layout_marginTop="10dp"
+        android:text="Dishes"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.073"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/search_dish" />
+
+    <EditText
+        android:id="@+id/search_dish"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/search_background"
+        android:ems="10"
+        android:hint="Search your favourite food"
+        android:inputType="textPersonName"
+        android:paddingStart="20dp"
+        android:drawableStart="@drawable/ic_baseline_search_24"
+        android:drawablePadding="10dp"
+        app:layout_constraintBottom_toTopOf="@id/foodie_textView"
+        app:layout_constraintEnd_toEndOf="@id/image_slider"
+        app:layout_constraintHorizontal_bias="0.6"
+        app:layout_constraintStart_toStartOf="@id/image_slider"
+        app:layout_constraintTop_toBottomOf="@id/image_slider" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="32dp"
+        android:text="View More"
+        android:textColor="@color/custom_green"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/foodie_textView"
+        app:layout_constraintBottom_toBottomOf="@id/foodie_textView"
+        />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/dish_list_recycle_view"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/foodie_textView"
+        app:layout_constraintVertical_bias="0" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
