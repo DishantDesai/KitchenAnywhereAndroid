@@ -8,6 +8,8 @@ import android.view.WindowManager;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -17,6 +19,13 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
+import com.kitchen_anywhere.kitchen_anywhere.model.FoodModel;
+import com.kitchen_anywhere.kitchen_anywhere.model.UserModel;
+
+import java.util.ArrayList;
 
 public class SplashScreenActivity extends AppCompatActivity {
     FirebaseAuth mAuth;
@@ -40,42 +49,53 @@ public class SplashScreenActivity extends AppCompatActivity {
                     startActivity(new Intent(SplashScreenActivity.this, login.class));
 
                 }else{
+                    String userId=user.getUid();
+
+                    FirebaseFirestore.getInstance().collection("User").whereEqualTo("userID",userId)
+                            .get().addOnCompleteListener(
+                            new OnCompleteListener<QuerySnapshot>()
+                            {
+                                @Override
+                                public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                                    if(task.isSuccessful())
+                                    {
+                                        for(QueryDocumentSnapshot doc : task.getResult())
+                                        {
+//                                            if(doc.getData())
+                                        System.out.println(doc.getData());
+
+
+                                            constant.CurrentUser  =  new UserModel(doc.getData().get("id").toString(),
+                                                    doc.getData().get("email").toString(),
+                                                    doc.getData().get("fullName").toString(),
+                                                    doc.getData().get("address").toString(),
+                                                    doc.getData().get("postal_code").toString(),
+                                                    doc.getData().get("phoneNo").toString(),
+                                                    (Boolean) doc.getData().get("isChef")
+                                            );
+
+                                            System.out.println(constant.CurrentUser);
+                                        }
+                                        if(constant.CurrentUser.getIsChef())
+                                        {
+                                            startActivity(new Intent(SplashScreenActivity.this, ChefHomePage.class));
+                                        }
+                                        else
+                                        {
+                                            startActivity(new Intent(SplashScreenActivity.this, FoodieHomePage.class));
+                                        }
+                                        finish();
+                                    }
+                                }
+                            }
+                    );
 
 
 
-//                    String userId=user.getUid();
-//
-//                    // Database reference pointing to root of database
-//                    rootRef = FirebaseDatabase.getInstance().getReference();
-//
-//                    // Database reference pointing to demo node
-//                    demoRef = rootRef.child("User");
-//                    Query query = FirebaseDatabase.getInstance().getReference("User").equalTo(userId,"userID");
-//                    demoRef.addValueEventListener(new ValueEventListener() {
-//                        @Override
-//                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//                            startActivity(new Intent(SplashScreenActivity.this, ChefHomePage.class));
-//                            for(DataSnapshot childSnapshot: dataSnapshot.getChildren()) {
-////                            YourModel yourModel = childSnapshot.getValue(YourModel.class);
-//
-////                            if(yourModel.getDate().equalsIgnoreCase("2019/11/18")) {
-////                                // Here is your desired location
-////                            }
-//                                System.out.println(childSnapshot);
-//                                startActivity(new Intent(SplashScreenActivity.this, ChefHomePage.class));
-//                            }
-//                        }
-//
-//                        @Override
-//                        public void onCancelled(@NonNull DatabaseError databaseError) {
-//
-//                        }
-//                    });
 
-                    startActivity(new Intent(SplashScreenActivity.this, FoodieHomePage.class));
 
                 }
-                finish();
+
 
             }
         },4000);

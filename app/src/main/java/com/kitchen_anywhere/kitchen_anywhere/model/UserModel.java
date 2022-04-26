@@ -9,7 +9,15 @@ public class UserModel {
     private String phoneNo;
     private boolean isChef;
 
-
+    public UserModel(String userID, String email, String fullName, String address, String postal_code, String phoneNo,boolean isChef) {
+        this.userID = userID;
+        this.email = email;
+        this.fullName = fullName;
+        this.address = address;
+        this.postal_code = postal_code;
+        this.phoneNo = phoneNo;
+        this.isChef = isChef;
+    }
     // Getter Methods
 
     public String getUserID() {
