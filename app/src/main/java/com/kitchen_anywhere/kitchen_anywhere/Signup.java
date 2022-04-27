@@ -169,7 +169,7 @@ public class Signup extends AppCompatActivity {
         String postalCodeVal = postalCode.getEditText().getText().toString();
         String phoneVal = phoneNo.getEditText().getText().toString();
         int userTypeIdVal = userType.getCheckedRadioButtonId();
-        String userTypeVal = (String) ((RadioButton) findViewById(userTypeIdVal)).getText();
+        Boolean userTypeVal = ((RadioButton) findViewById(userTypeIdVal)).getText().toString().equals("Chef") ? true : false;
         try {
             if(!isNameValid() | !isEmailValid() | !isPhoneNoValid() | !isPasswordValid() | !isConfirmPasswordValid() | !isAddressValid() | !isPostalCodeValid()){
                 return;
@@ -186,8 +186,9 @@ public class Signup extends AppCompatActivity {
                         user.put("phoneNo",phoneVal);
                         user.put("address",addressVal);
                         user.put("postal_code",postalCodeVal);
-                        user.put("isChef", userTypeVal.toLowerCase() == "chef");
+                        user.put("isChef", userTypeVal);
                         user.put("userID",userID);
+                        user.put("userStatus","pending");
                         documentReference.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
                             public void onSuccess(Void aVoid) {

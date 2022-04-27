@@ -18,9 +18,15 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.denzcoskun.imageslider.ImageSlider;
 import com.denzcoskun.imageslider.constants.ScaleTypes;
 import com.denzcoskun.imageslider.models.SlideModel;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 import com.kitchen_anywhere.kitchen_anywhere.adapter.FoodAdapter;
 import com.kitchen_anywhere.kitchen_anywhere.model.FoodModel;
+import com.kitchen_anywhere.kitchen_anywhere.model.UserModel;
 
 import java.util.ArrayList;
 
@@ -44,7 +50,7 @@ public class FoodieHomePageFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_foodie_home_page_fragment, container, false);
-//        progressBar = (ProgressBar)view.findViewById(R.id.foodie_loading);
+        progressBar = (ProgressBar)view.findViewById(R.id.foodie_loading);
 //        d_list = (ListView) view.findViewById(R.id.foodie_DishList);
 //        listView = view.findViewById(R.id.foodie_DishList);
         imageSlider = view.findViewById(R.id.image_slider);
@@ -54,60 +60,8 @@ public class FoodieHomePageFragment extends Fragment {
         images.add(new SlideModel("https://www.wingsworldcuisine.ie/wp-content/uploads/2021/11/Wings-dubling-student-offer_19112021.jpg",null));
         images.add(new SlideModel("https://www.french-waterways.com/waterpress/wp-content/imagez/Copy-of-FW_French-dishes-1000x563.png",null));
         imageSlider.setImageList(images, ScaleTypes.FIT);
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-//                progressBar.setVisibility(View.INVISIBLE);
-
-                ListView listView;
-                String dishNames[] = {
-                        "Paneer Tikka Masala",
-                        "Paneer bhurji",
-                        "Dhosa",
-                        "Bhaji Pav",
-                        "Paneer Tikka Masala",
-                        "Paneer bhurji",
-                        "Dhosa",
-                        "Bhaji Pav",
-                        "Paneer Tikka Masala",
-                        "Paneer bhurji",
-                        "Dhosa",
-                        "Bhaji Pav"
-                };
-
-                String dishSubtitle[] = {
-                        "spice panjabi dish",
-                        "mid spice panjabi dish",
-                        "south indian dish",
-                        "indian dish",
-                        "spice panjabi dish",
-                        "mid spice panjabi dish",
-                        "south indian dish",
-                        "indian dish",
-                        "spice panjabi dish",
-                        "mid spice panjabi dish",
-                        "south indian dish",
-                        "indian dish"
-                };
-
-                String dishimageid[] = {
-                        "https://www.thespruceeats.com/thmb/UMT0Jx65qwNd0wxGdPk8nED3FBo=/2000x1500/filters:fill(auto,1)/GettyImages-1042998066-518ca1d7f2804eb09039e9e42e91667c.jpg",
-                        "https://www.eatthis.com/wp-content/uploads/sites/4/2019/06/deep-dish-pizza-chicago.jpg",
-                        "https://insanelygoodrecipes.com/wp-content/uploads/2020/09/Indian-Dish-Malai-Kofta.png",
-                        "https://us.123rf.com/450wm/fahrwasser/fahrwasser1710/fahrwasser171000119/87425544-fried-rice-with-vegetables-and-steamed-broccoli.jpg?ver=6"
-                };
-
-//                ListView dishList=(ListView)view.findViewById(R.id.foodie_DishList);
-//
-//                // For populating list data
-//                FoodiecustomDistListAdapter foodList = new FoodiecustomDistListAdapter(getActivity(), dishNames, dishSubtitle, dishimageid);
-//                dishList.setAdapter(foodList);
-
-
-
-            }
-        },4000);
-        recyclerViewDish(view);
+//        recyclerViewDish(view);
+        getDish(view);
         return view;
     }
 
@@ -127,6 +81,41 @@ public class FoodieHomePageFragment extends Fragment {
     }
     public void getDish(View view)
     {
+
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity(),LinearLayoutManager.VERTICAL,false);
+        recyclerViewDishList =  view.findViewById(R.id.dish_list_recycle_view);
+
+        ArrayList<FoodModel> foodlist = new ArrayList<>();
+            FirebaseFirestore.getInstance().collection("Dish")
+                    .get().addOnCompleteListener(
+                    new OnCompleteListener<QuerySnapshot>()
+                    {
+                        @Override
+                        public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                            if(task.isSuccessful())
+                            {
+
+                                ArrayList<FoodModel> foodlist = new ArrayList<>();
+                                for(QueryDocumentSnapshot doc : task.getResult())
+                                {
+                                    long price = new Long(doc.getData().get("price").toString());
+                                    double mainPrice = price;
+                                    foodlist.add (new FoodModel(  doc.getData().get("dishTitle").toString(),
+                                            doc.getData().get("description").
+                                                    toString(),doc.getData().get("typeOfDish").toString(),
+                                            mainPrice,
+                                            doc.getData().get("dishImageLink").toString(),5));
+                                }
+                                constant.alldishdata = foodlist;
+                                recyclerViewDishList.setLayoutManager(linearLayoutManager);
+                                dishAdapter = new FoodAdapter(getActivity(), (ArrayList<FoodModel>) constant.alldishdata);
+                                recyclerViewDishList.setAdapter(dishAdapter);
+                                progressBar.setVisibility(View.INVISIBLE);
+                                recyclerViewDishList.setVisibility(View.VISIBLE);
+                            }
+                        }
+                    }
+            );
 
 
     }
