@@ -1,6 +1,7 @@
 package com.kitchen_anywhere.kitchen_anywhere.adapter;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.kitchen_anywhere.kitchen_anywhere.R;
+import com.kitchen_anywhere.kitchen_anywhere.dishes_in_details;
 import com.kitchen_anywhere.kitchen_anywhere.model.FoodModel;
 
 import java.util.ArrayList;
@@ -39,6 +41,13 @@ public class ChefFoodAdapter extends RecyclerView.Adapter<ChefFoodAdapter.ViewHo
         holder.description.setText(String.valueOf(foodItems.get(position).getDescription()));
 //
 //
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, dishes_in_details.class);
+                context.startActivity(intent);
+            }
+        });
         Glide.with(holder.itemView.getContext())
                 .load(foodItems.get(position).getImage())
                 .into(holder.pic);
