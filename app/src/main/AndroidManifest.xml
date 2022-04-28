@@ -14,9 +14,6 @@
         <activity
             android:name=".dishes_in_details"
             android:exported="false" />
-            <intent-filter>
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         <activity
             android:name=".AddDish"
             android:exported="false" />

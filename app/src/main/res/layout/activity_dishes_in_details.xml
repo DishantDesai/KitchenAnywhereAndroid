@@ -58,7 +58,7 @@
             app:layout_constraintStart_toEndOf="@id/txt_title"
             app:layout_constraintTop_toBottomOf="@+id/img_title" />
 
-<!--        /*https://abhiandroid.com/ui/ratingbar*/-->
+        <!--        /*https://abhiandroid.com/ui/ratingbar*/-->
 
         <RatingBar
             android:id="@+id/ratingBar"
