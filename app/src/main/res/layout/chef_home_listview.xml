@@ -2,55 +2,61 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
-
-    <GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="16dp"
+    android:layout_marginEnd="16dp"
+    android:layout_marginTop="16dp"
+    android:paddingBottom="16dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/card_shadow_background"
+    android:elevation="3dp"
+    android:layout_marginBottom="16dp"
+    >
+    <ImageView
         android:layout_width="match_parent"
-        android:layout_height="match_parent" >
+        android:layout_height="200dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:src="@drawable/splash_logo"
+        android:scaleType="fitXY"
+        android:id="@+id/chef_item_image" />
 
-        <Space
-
-            android:layout_height="35dp"/>
-
-        <ImageView
-
-            android:layout_rowSpan="2"
-            android:layout_width="80dp"
-            android:layout_height="70dp"
-
-            android:scaleType="fitXY"
-            android:id="@+id/imageViewFlag"
-            android:layout_row="0"
-            android:layout_column="0" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_columnWeight="1"
-            android:layout_marginLeft="10dp"
-            android:textSize="30dp"
-            android:textColor="@color/custom_green"
-            android:id="@+id/textViewCountry"
-            android:layout_row="0"
-            android:layout_column="1" />
-        <Space
-
-            android:layout_height="20dp"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_columnWeight="1"
-            android:layout_marginLeft="10dp"
-            android:textSize="20dp"
-            android:textColor="@color/black"
-            android:id="@+id/textViewCapital"
-            android:layout_row="1"
-            android:layout_column="1" />
-        <Space
-
-            android:layout_height="35dp"/>
-
-    </GridLayout>
-
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@id/chef_item_image"
+        app:layout_constraintStart_toStartOf="@id/chef_item_image"
+        app:layout_constraintEnd_toEndOf="@id/chef_item_image"
+        android:textSize="22dp"
+        android:textColor="@color/custom_green"
+        android:text="TextView"
+        android:id="@+id/chef_item_text_title"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        app:layout_constraintTop_toBottomOf="@id/chef_item_text_title"
+        app:layout_constraintStart_toStartOf="@id/chef_item_image"
+        app:layout_constraintEnd_toEndOf="@id/chef_item_image"
+        android:textSize="22dp"
+        android:textColor="@color/black"
+        android:text="$1.90"
+        android:id="@+id/chef_price_text"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/chef_price_text"
+        app:layout_constraintStart_toStartOf="@id/chef_item_image"
+        app:layout_constraintEnd_toEndOf="@id/chef_item_image"
+        android:layout_marginStart="16dp"
+        android:textSize="15dp"
+        android:text="Description"
+        android:textColor="@color/grey"
+        android:id="@+id/chef_item_text_description"
+        />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,4 +1,4 @@
-package com.kitchen_anywhere.kitchen_anywhere.adapter;
+package com.kitchen_anywhere.kitchen_anywhere.foodie;
 
 import android.app.Activity;
 import android.view.LayoutInflater;
@@ -11,14 +11,14 @@ import android.widget.Toast;
 
 import com.kitchen_anywhere.kitchen_anywhere.R;
 
-public class customDistListAdapter  extends ArrayAdapter {
+public class FoodiecustomDistListAdapter extends ArrayAdapter {
     private String[] dishNames;
     private String[] dishSubtitle;
     private String[] dishimageid;
     private Activity context;
 
-    public customDistListAdapter(Activity context, String[] dishNames, String[] dishSubtitle, String[] dishimageid) {
-        super(context, R.layout.chef_home_listview, dishNames);
+    public FoodiecustomDistListAdapter(Activity context, String[] dishNames, String[] dishSubtitle, String[] dishimageid) {
+        super(context, R.layout.foodie_home_listview, dishNames);
         this.context = context;
         this.dishNames = dishNames;
         this.dishSubtitle = dishSubtitle;
@@ -30,10 +30,10 @@ public class customDistListAdapter  extends ArrayAdapter {
         View row=convertView;
         LayoutInflater inflater = context.getLayoutInflater();
         if(convertView==null)
-            row = inflater.inflate(R.layout.chef_home_listview, null, true);
-        TextView textViewCountry = (TextView) row.findViewById(R.id.textViewCountry);
-        TextView textViewCapital = (TextView) row.findViewById(R.id.textViewCapital);
-        ImageView imageFlag = (ImageView) row.findViewById(R.id.imageViewFlag);
+            row = inflater.inflate(R.layout.foodie_home_listview, null, true);
+        TextView textViewCountry = (TextView) row.findViewById(R.id.food_item_text_title);
+        TextView textViewCapital = (TextView) row.findViewById(R.id.food_item_text_description);
+        ImageView imageFlag = (ImageView) row.findViewById(R.id.food_item_image);
 
         textViewCountry.setText(dishNames[position]);
         textViewCapital.setText(dishSubtitle[position]);
@@ -59,6 +59,7 @@ public class customDistListAdapter  extends ArrayAdapter {
             public void onClick(View v)
             {
                 Toast.makeText(context,dishNames[position],Toast.LENGTH_SHORT);
+                System.out.println(dishNames[position]);
             }
         });
 //        Thread thread = new Thread(new Runnable(){

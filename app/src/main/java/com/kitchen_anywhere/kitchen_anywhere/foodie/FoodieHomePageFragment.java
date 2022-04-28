@@ -1,4 +1,4 @@
-package com.kitchen_anywhere.kitchen_anywhere;
+package com.kitchen_anywhere.kitchen_anywhere.foodie;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -24,7 +24,9 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.kitchen_anywhere.kitchen_anywhere.R;
 import com.kitchen_anywhere.kitchen_anywhere.adapter.FoodAdapter;
+import com.kitchen_anywhere.kitchen_anywhere.constant;
 import com.kitchen_anywhere.kitchen_anywhere.model.FoodModel;
 import com.kitchen_anywhere.kitchen_anywhere.model.UserModel;
 
@@ -60,25 +62,10 @@ public class FoodieHomePageFragment extends Fragment {
         images.add(new SlideModel("https://www.wingsworldcuisine.ie/wp-content/uploads/2021/11/Wings-dubling-student-offer_19112021.jpg",null));
         images.add(new SlideModel("https://www.french-waterways.com/waterpress/wp-content/imagez/Copy-of-FW_French-dishes-1000x563.png",null));
         imageSlider.setImageList(images, ScaleTypes.FIT);
-//        recyclerViewDish(view);
         getDish(view);
         return view;
     }
 
-    private void recyclerViewDish(View view) {
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity(),LinearLayoutManager.VERTICAL,false);
-        recyclerViewDishList =  view.findViewById(R.id.dish_list_recycle_view);
-        recyclerViewDishList.setLayoutManager(linearLayoutManager);
-        ArrayList<FoodModel> foodlist = new ArrayList<>();
-        foodlist.add (new FoodModel(  "Pepperoni pizza","slices pepperoni mozzarella cheese, fresh oregano","Non-veg",13.0,"https://www.thespruceeats.com/thmb/UMT0Jx65qwNd0wxGdPk8nED3FBo=/2000x1500/filters:fill(auto,1)/GettyImages-1042998066-518ca1d7f2804eb09039e9e42e91667c.jpg",5));
-        foodlist.add (new FoodModel(  "Pepperoni pizza","slices pepperoni mozzarella cheese, fresh oregano","Non-veg",13.0,"https://www.eatthis.com/wp-content/uploads/sites/4/2019/06/deep-dish-pizza-chicago.jpg",5));
-        foodlist.add (new FoodModel(  "Pepperoni pizza","slices pepperoni mozzarella cheese, fresh oregano","Non-veg",13.0,"https://www.thespruceeats.com/thmb/UMT0Jx65qwNd0wxGdPk8nED3FBo=/2000x1500/filters:fill(auto,1)/GettyImages-1042998066-518ca1d7f2804eb09039e9e42e91667c.jpg",5));
-        foodlist.add (new FoodModel(  "Pepperoni pizza","slices pepperoni mozzarella cheese, fresh oregano","Non-veg",13.0,"https://insanelygoodrecipes.com/wp-content/uploads/2020/09/Indian-Dish-Malai-Kofta.png",5));
-        foodlist.add (new FoodModel(  "Pepperoni pizza","slices pepperoni mozzarella cheese, fresh oregano","Non-veg",13.0,"https://us.123rf.com/450wm/fahrwasser/fahrwasser1710/fahrwasser171000119/87425544-fried-rice-with-vegetables-and-steamed-broccoli.jpg?ver=6",5));
-        System.out.println(foodlist);
-        dishAdapter = new FoodAdapter(getActivity(),foodlist);
-        recyclerViewDishList.setAdapter(dishAdapter);
-    }
     public void getDish(View view)
     {
 
@@ -104,7 +91,9 @@ public class FoodieHomePageFragment extends Fragment {
                                             doc.getData().get("description").
                                                     toString(),doc.getData().get("typeOfDish").toString(),
                                             mainPrice,
-                                            doc.getData().get("dishImageLink").toString(),5));
+                                            doc.getData().get("dishImageLink").toString(),5,
+                                            doc.getData().get("chef_id").toString()
+                                            ));
                                 }
                                 constant.alldishdata = foodlist;
                                 recyclerViewDishList.setLayoutManager(linearLayoutManager);

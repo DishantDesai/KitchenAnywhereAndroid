@@ -7,6 +7,6 @@ import java.util.List;
 
 public class constant {
 
-    static UserModel CurrentUser;
-    static List<FoodModel> alldishdata;
+    public static UserModel CurrentUser;
+    public static List<FoodModel> alldishdata;
 }

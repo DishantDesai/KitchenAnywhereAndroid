@@ -19,6 +19,8 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.kitchen_anywhere.kitchen_anywhere.chef.ChefHomePage;
+import com.kitchen_anywhere.kitchen_anywhere.foodie.FoodieHomePage;
 import com.kitchen_anywhere.kitchen_anywhere.model.UserModel;
 
 public class login extends AppCompatActivity {

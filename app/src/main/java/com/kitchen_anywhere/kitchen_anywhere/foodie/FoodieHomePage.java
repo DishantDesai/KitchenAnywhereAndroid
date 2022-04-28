@@ -1,21 +1,12 @@
-package com.kitchen_anywhere.kitchen_anywhere;
-import android.content.Intent;
+package com.kitchen_anywhere.kitchen_anywhere.foodie;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.firestore.QuerySnapshot;
-import com.kitchen_anywhere.kitchen_anywhere.model.UserModel;
+import com.kitchen_anywhere.kitchen_anywhere.R;
 
 public class FoodieHomePage extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener{
 

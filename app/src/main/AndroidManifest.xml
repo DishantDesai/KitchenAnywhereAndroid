@@ -15,10 +15,10 @@
             android:name=".AddDish"
             android:exported="false" />
         <activity
-            android:name=".ChefHomePage"
+            android:name=".chef.ChefHomePage"
             android:exported="false" />
         <activity
-            android:name=".FoodieHomePage"
+            android:name=".foodie.FoodieHomePage"
             android:exported="false" />
         <activity
             android:name=".login"

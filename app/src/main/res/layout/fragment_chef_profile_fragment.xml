@@ -5,10 +5,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ChefHomePage">
+    tools:context=".chef.ChefHomePage">
 
     <ImageView
-        android:id="@+id/imageProfile"
+        android:id="@+id/chef_imageProfile"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginTop="48dp"
@@ -20,7 +20,7 @@
         tools:srcCompat="@tools:sample/avatars" />
 
     <EditText
-        android:id="@+id/userName"
+        android:id="@+id/chef_userName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
@@ -30,13 +30,13 @@
         android:minHeight="48dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageProfile"
+        app:layout_constraintTop_toBottomOf="@+id/chef_imageProfile"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
         />
 
     <EditText
-        android:id="@+id/EmailAddress"
+        android:id="@+id/chef_EmailAddress"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
@@ -46,12 +46,12 @@
         android:minHeight="48dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/userName"
+        app:layout_constraintTop_toBottomOf="@+id/chef_userName"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"/>
 
     <EditText
-        android:id="@+id/Phone"
+        android:id="@+id/chef_Phone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
@@ -61,12 +61,12 @@
         android:minHeight="48dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/EmailAddress"
+        app:layout_constraintTop_toBottomOf="@+id/chef_EmailAddress"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"/>
 
     <EditText
-        android:id="@+id/PostalAddress"
+        android:id="@+id/chef_PostalAddress"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
@@ -76,12 +76,12 @@
         android:minHeight="48dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Phone"
+        app:layout_constraintTop_toBottomOf="@+id/chef_Phone"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"/>
 
     <EditText
-        android:id="@+id/address"
+        android:id="@+id/chef_address"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
@@ -91,12 +91,12 @@
         android:minHeight="48dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/PostalAddress"
+        app:layout_constraintTop_toBottomOf="@+id/chef_PostalAddress"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"/>
 
     <TextView
-        android:id="@+id/userType"
+        android:id="@+id/chef_userType"
         android:layout_width="200dp"
         android:layout_height="25dp"
         android:layout_margin="15dp"
@@ -106,10 +106,10 @@
         android:textSize="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/address"
+        app:layout_constraintTop_toBottomOf="@+id/chef_address"
         />
     <Button
-        android:id="@+id/saveProfile"
+        android:id="@+id/chef_saveProfile"
         android:layout_width="200dp"
         android:layout_height="60dp"
         android:layout_margin="20dp"
@@ -119,7 +119,7 @@
         tools:ignore="MissingConstraints"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/userType"
+        app:layout_constraintTop_toBottomOf="@+id/chef_userType"
         />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
