@@ -7,6 +7,7 @@ import android.os.Bundle;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.kitchen_anywhere.kitchen_anywhere.chef.ChefHomePage;
 
 public class MainActivity extends AppCompatActivity {
     FirebaseAuth mAuth;

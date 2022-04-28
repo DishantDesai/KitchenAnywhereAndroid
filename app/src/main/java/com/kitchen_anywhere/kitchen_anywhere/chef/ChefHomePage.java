@@ -1,15 +1,13 @@
-package com.kitchen_anywhere.kitchen_anywhere;
+package com.kitchen_anywhere.kitchen_anywhere.chef;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.view.View;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.kitchen_anywhere.kitchen_anywhere.R;
 
 public class ChefHomePage extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener{
 

@@ -14,17 +14,14 @@
         <activity
             android:name=".dishes_in_details"
             android:exported="false" />
-            <intent-filter>
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         <activity
             android:name=".AddDish"
             android:exported="false" />
         <activity
-            android:name=".ChefHomePage"
+            android:name=".chef.ChefHomePage"
             android:exported="false" />
         <activity
-            android:name=".FoodieHomePage"
+            android:name=".foodie.FoodieHomePage"
             android:exported="false" />
         <activity
             android:name=".login"
@@ -38,11 +35,11 @@
         <activity
             android:name=".SplashScreenActivity"
             android:exported="true">
-<!--            <intent-filter>-->
-<!--                <action android:name="android.intent.action.MAIN" />-->
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-<!--                <category android:name="android.intent.category.LAUNCHER" />-->
-<!--            </intent-filter>-->
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
     </application>
 
