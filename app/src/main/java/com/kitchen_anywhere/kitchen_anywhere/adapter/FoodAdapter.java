@@ -2,6 +2,7 @@ package com.kitchen_anywhere.kitchen_anywhere.adapter;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.os.Bundle;
 import android.view.ViewGroup;
 import android.view.View;
 
@@ -36,7 +37,7 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.ViewHolder> {
         return new ViewHolder (inflate);
     }
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder,int position) {
         holder.title.setText(foodItems.get(position).getTitle());
         holder.price.setText("$" + String.valueOf(foodItems.get(position).getPrice()));
         holder.description.setText(String.valueOf(foodItems.get(position).getDescription()));
@@ -45,6 +46,13 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.ViewHolder> {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context, dishes_in_details.class);
+                Bundle bundle = new Bundle();
+                bundle.putString("title", foodItems.get(position).getTitle());
+                bundle.putString("description", String.valueOf(foodItems.get(position).getDescription()));
+                bundle.putString("price", "$" + String.valueOf(foodItems.get(position).getPrice()));
+                bundle.putString("image", foodItems.get(position).getImage());
+                intent.putExtras(bundle);
+
                 context.startActivity(intent);
             }
         });
