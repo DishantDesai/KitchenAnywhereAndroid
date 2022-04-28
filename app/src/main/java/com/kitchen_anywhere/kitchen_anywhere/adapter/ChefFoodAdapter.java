@@ -2,6 +2,7 @@ package com.kitchen_anywhere.kitchen_anywhere.adapter;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -45,6 +46,14 @@ public class ChefFoodAdapter extends RecyclerView.Adapter<ChefFoodAdapter.ViewHo
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context, dishes_in_details.class);
+
+                Bundle bundle = new Bundle();
+                bundle.putString("title", foodItems.get(position).getTitle());
+                bundle.putString("description", String.valueOf(foodItems.get(position).getDescription()));
+                bundle.putString("price", "$" + String.valueOf(foodItems.get(position).getPrice()));
+                bundle.putString("image", foodItems.get(position).getImage());
+                intent.putExtras(bundle);
+
                 context.startActivity(intent);
             }
         });
