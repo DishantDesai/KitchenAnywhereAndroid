@@ -87,13 +87,25 @@ public class FoodieHomePageFragment extends Fragment {
                                 {
                                     long price = new Long(doc.getData().get("price").toString());
                                     double mainPrice = price;
+
+                                    long max = new Long(doc.getData().get("maxLimit").toString());
+                                    double maxLimit = max;
+
+                                    long pending_limit_temp = new Long(doc.getData().get("pending_limit").toString());
+                                    double pending_limit = pending_limit_temp;
+
+                                    long categoryId_temp = new Long(doc.getData().get("categoryId").toString());
+                                    int categoryId = (int) categoryId_temp;
+
                                     foodlist.add (new FoodModel(  doc.getData().get("dishTitle").toString(),
                                             doc.getData().get("description").
                                                     toString(),doc.getData().get("typeOfDish").toString(),
                                             mainPrice,
                                             doc.getData().get("dishImageLink").toString(),5,
-                                            doc.getData().get("chef_id").toString()
-                                            ));
+                                            doc.getData().get("chef_id").toString(),
+                                            new ArrayList<>(),categoryId,
+                                            maxLimit,pending_limit,true,true
+                                    ));
                                 }
                                 constant.alldishdata = foodlist;
                                 recyclerViewDishList.setLayoutManager(linearLayoutManager);

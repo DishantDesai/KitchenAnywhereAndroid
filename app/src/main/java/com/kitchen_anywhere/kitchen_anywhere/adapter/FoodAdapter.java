@@ -38,7 +38,7 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.ViewHolder> {
     }
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder,int position) {
-        holder.title.setText(foodItems.get(position).getTitle());
+        holder.title.setText(foodItems.get(position).getdishTitle());
         holder.price.setText("$" + String.valueOf(foodItems.get(position).getPrice()));
         holder.description.setText(String.valueOf(foodItems.get(position).getDescription()));
 
@@ -47,10 +47,10 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.ViewHolder> {
             public void onClick(View v) {
                 Intent intent = new Intent(context, dishes_in_details.class);
                 Bundle bundle = new Bundle();
-                bundle.putString("title", foodItems.get(position).getTitle());
+                bundle.putString("title", foodItems.get(position).getdishTitle());
                 bundle.putString("description", String.valueOf(foodItems.get(position).getDescription()));
                 bundle.putString("price", "$" + String.valueOf(foodItems.get(position).getPrice()));
-                bundle.putString("image", foodItems.get(position).getImage());
+                bundle.putString("image", foodItems.get(position).getdishImageLink());
                 intent.putExtras(bundle);
 
                 context.startActivity(intent);
@@ -58,7 +58,7 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.ViewHolder> {
         });
 
         Glide.with(holder.itemView.getContext())
-                .load(foodItems.get(position).getImage())
+                .load(foodItems.get(position).getdishImageLink())
                 .into(holder.pic);
 
 
