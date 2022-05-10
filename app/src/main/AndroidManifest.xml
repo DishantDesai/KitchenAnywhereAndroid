@@ -14,14 +14,17 @@
         <activity
             android:name=".CartScreen"
             android:exported="false" />
+            <activity
+            android:name=".dishes_in_details"
+            android:exported="false" />
         <activity
             android:name=".AddDish"
             android:exported="false" />
         <activity
-            android:name=".ChefHomePage"
+            android:name=".chef.ChefHomePage"
             android:exported="false" />
         <activity
-            android:name=".FoodieHomePage"
+            android:name=".foodie.FoodieHomePage"
             android:exported="false" />
         <activity
             android:name=".login"

@@ -1,28 +1,106 @@
 package com.kitchen_anywhere.kitchen_anywhere.model;
 
+import java.util.List;
+
 public class FoodModel
 {
-    private String title;
+    private String dishTitle;
     private String description;
-    private String type;
+    private String typeOfDish;
     private Double price;
-    private String image;
+    private String dishImageLink;
+    private String chef_id;
+    private int categoryId;
+    private List<String> favouriteUserID;
     private int star;
+    private boolean isActive;
+    private boolean isVegetarian;
+    private Double maxLimit ;
+    private Double pendingLimit ;
 
-    public FoodModel(String title, String description, String type, Double price, String image, int star) {
-        this.title = title;
+    public FoodModel(String dishTitle, String description, String typeOfDish, Double price, String dishImageLink, int star,
+                     String chef_id,List<String> favouriteUserID,int categoryId,
+                     Double maxLimit, Double pendingLimit,boolean isActive,boolean isVegetarian
+                     ) {
+        this.dishTitle = dishTitle;
         this.description = description;
-        this.type = type;
+        this.typeOfDish = typeOfDish;
         this.price = price;
-        this.image = image;
+        this.dishImageLink = dishImageLink;
         this.star = star;
-    }
-    public String getTitle() {
-        return title;
+        this.chef_id = chef_id ;
+        this.favouriteUserID = favouriteUserID;
+        this.categoryId = categoryId ;
+        this.maxLimit = maxLimit;
+        this.pendingLimit = pendingLimit ;
+        this.isActive = isActive;
+        this.isVegetarian = isVegetarian ;
+
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+
+    public boolean getisVegetarian() {
+        return isVegetarian;
+    }
+
+    public void setisVegetarian(boolean isVegetarian) {
+        this.isVegetarian = isVegetarian;
+    }
+
+    public boolean getisActive() {
+        return isActive;
+    }
+
+    public void setisActive(boolean isActive) {
+        this.isActive = isActive;
+    }
+
+
+    public Double getpending_limit() {
+        return pendingLimit;
+    }
+
+    public void setpending_limit(Double pendingLimit) {
+        this.pendingLimit = pendingLimit;
+    }
+
+    public Double getmaxLimit() {
+        return maxLimit;
+    }
+
+    public void setmaxLimit(Double maxLimit) {
+        this.maxLimit = maxLimit;
+    }
+    public int getCategoryId() {
+        return categoryId;
+    }
+
+    public void setCategoryId(int categoryId) {
+        this.categoryId = categoryId;
+    }
+    public List<String> getfavouriteUserID() {
+        return favouriteUserID;
+    }
+
+    public void setfavouriteUserID(List<String> favouriteUserID) {
+        this.favouriteUserID = favouriteUserID;
+    }
+
+
+    public String getdishTitle() {
+        return dishTitle;
+    }
+
+    public void setdishTitle(String dishTitle) {
+        this.dishTitle = dishTitle;
+    }
+
+    public String getChef_id() {
+        return chef_id;
+    }
+
+    public void setChef_id(String chef_id) {
+        this.chef_id = chef_id;
     }
 
     public String getDescription() {
@@ -33,12 +111,12 @@ public class FoodModel
         this.description = description;
     }
 
-    public String getType() {
-        return type;
+    public String gettypeOfDish() {
+        return typeOfDish;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void settypeOfDish(String typeOfDish) {
+        this.typeOfDish = typeOfDish;
     }
 
     public Double getPrice() {
@@ -49,12 +127,12 @@ public class FoodModel
         this.price = price;
     }
 
-    public String getImage() {
-        return image;
+    public String getdishImageLink() {
+        return dishImageLink;
     }
 
-    public void setImage(String image) {
-        this.image = image;
+    public void setdishImageLink(String dishImageLink) {
+        this.dishImageLink = dishImageLink;
     }
 
     public int getStar() {

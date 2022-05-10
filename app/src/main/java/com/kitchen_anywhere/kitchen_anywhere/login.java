@@ -15,6 +15,13 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
+import com.kitchen_anywhere.kitchen_anywhere.chef.ChefHomePage;
+import com.kitchen_anywhere.kitchen_anywhere.foodie.FoodieHomePage;
+import com.kitchen_anywhere.kitchen_anywhere.model.UserModel;
 
 public class login extends AppCompatActivity {
 
@@ -70,10 +77,56 @@ public class login extends AppCompatActivity {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if (task.isSuccessful()){
-                        Toast.makeText(login.this, "User logged in successfully", Toast.LENGTH_SHORT).show();
-//                        startActivity(new Intent(login.this, ChefHomePage.class));
-                        startActivity(new Intent(login.this, FoodieHomePage.class));
-                        finish();
+
+                        FirebaseUser user = mAuth.getCurrentUser();
+
+
+                        String userId=user.getUid();
+
+                        FirebaseFirestore.getInstance().collection("User").whereEqualTo("userID",userId)
+                                .get().addOnCompleteListener(
+                                new OnCompleteListener<QuerySnapshot>()
+                                {
+                                    @Override
+                                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                                        if(task.isSuccessful())
+                                        {
+                                            for(QueryDocumentSnapshot doc : task.getResult())
+                                            {
+//                                            if(doc.getData())
+                                                System.out.println(doc.getData());
+
+
+                                                constant.CurrentUser  =  new UserModel(doc.getData().get("userID").toString(),
+                                                        doc.getData().get("email").toString(),
+                                                        doc.getData().get("fullName").toString(),
+                                                        doc.getData().get("address").toString(),
+                                                        doc.getData().get("postal_code").toString(),
+                                                        doc.getData().get("phoneNo").toString(),
+                                                        (Boolean) doc.getData().get("isChef")
+                                                );
+
+                                                System.out.println(constant.CurrentUser);
+                                            }
+                                            if(constant.CurrentUser.getIsChef())
+                                            {
+                                                startActivity(new Intent(login.this, ChefHomePage.class));
+                                            }
+                                            else
+                                            {
+                                                startActivity(new Intent(login.this, FoodieHomePage.class));
+                                            }
+                                            Toast.makeText(login.this, "User logged in successfully", Toast.LENGTH_SHORT).show();
+                                            finish();
+                                        }
+                                    }
+                                }
+                        );
+
+
+
+
+
                     }else{
                         Toast.makeText(login.this, "Log in Error: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                     }
