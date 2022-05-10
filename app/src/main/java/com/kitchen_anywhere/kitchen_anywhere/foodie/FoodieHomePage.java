@@ -1,4 +1,5 @@
 package com.kitchen_anywhere.kitchen_anywhere.foodie;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 
@@ -24,6 +25,8 @@ public class FoodieHomePage extends AppCompatActivity implements BottomNavigatio
         bottomNavigationView.setOnNavigationItemSelectedListener(this);
         bottomNavigationView.setSelectedItemId(R.id.foodie_home);
     }
+
+
 
 
     FoodieHomePageFragment FoodieHomePageFragment = new FoodieHomePageFragment();
