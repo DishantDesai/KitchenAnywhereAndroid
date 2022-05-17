@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.kitchen_anywhere.kitchen_anywhere.R;
-import com.kitchen_anywhere.kitchen_anywhere.dishes_in_details;
+import com.kitchen_anywhere.kitchen_anywhere.DishDetails;
 import com.kitchen_anywhere.kitchen_anywhere.model.FoodModel;
 
 import java.util.ArrayList;
@@ -45,7 +45,7 @@ public class ChefFoodAdapter extends RecyclerView.Adapter<ChefFoodAdapter.ViewHo
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(context, dishes_in_details.class);
+                Intent intent = new Intent(context, DishDetails.class);
 
                 Bundle bundle = new Bundle();
                 bundle.putString("title", foodItems.get(position).getdishTitle());

@@ -19,7 +19,6 @@ import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
@@ -64,7 +63,7 @@ public class Signup extends AppCompatActivity {
         findViewById(R.id.reg_to_login_btn).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Signup.this,login.class);
+                Intent intent = new Intent(Signup.this, Login.class);
                 startActivity(intent);
                 finish();
             }
@@ -201,7 +200,7 @@ public class Signup extends AppCompatActivity {
                             }
                         });
                         Toast.makeText(Signup.this, "User registered successfully", Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(Signup.this, login.class));
+                        startActivity(new Intent(Signup.this, Login.class));
                     }else{
                         Toast.makeText(Signup.this, "Registration Error: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                     }

@@ -21,9 +21,10 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.kitchen_anywhere.kitchen_anywhere.chef.ChefHomePage;
 import com.kitchen_anywhere.kitchen_anywhere.foodie.FoodieHomePage;
+import com.kitchen_anywhere.kitchen_anywhere.helper.constant;
 import com.kitchen_anywhere.kitchen_anywhere.model.UserModel;
 
-public class login extends AppCompatActivity {
+public class Login extends AppCompatActivity {
 
     private EditText email;
     private EditText pass;
@@ -49,7 +50,7 @@ public class login extends AppCompatActivity {
         findViewById(R.id.signupBtn).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(login.this,Signup.class);
+                Intent intent = new Intent(Login.this,Signup.class);
                 startActivity(intent);
                 finish();
             }
@@ -110,13 +111,13 @@ public class login extends AppCompatActivity {
                                             }
                                             if(constant.CurrentUser.getIsChef())
                                             {
-                                                startActivity(new Intent(login.this, ChefHomePage.class));
+                                                startActivity(new Intent(Login.this, ChefHomePage.class));
                                             }
                                             else
                                             {
-                                                startActivity(new Intent(login.this, FoodieHomePage.class));
+                                                startActivity(new Intent(Login.this, FoodieHomePage.class));
                                             }
-                                            Toast.makeText(login.this, "User logged in successfully", Toast.LENGTH_SHORT).show();
+                                            Toast.makeText(Login.this, "User logged in successfully", Toast.LENGTH_SHORT).show();
                                             finish();
                                         }
                                     }
@@ -128,7 +129,7 @@ public class login extends AppCompatActivity {
 
 
                     }else{
-                        Toast.makeText(login.this, "Log in Error: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(Login.this, "Log in Error: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 }
             });
