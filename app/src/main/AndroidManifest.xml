@@ -10,12 +10,13 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.KitchenAnywhereAndroid">
+        android:theme="@style/Theme.KitchenAnywhereAndroid"
+        >
         <activity
-            android:name=".CartScreen"
+            android:name=".Cart"
             android:exported="false" />
             <activity
-            android:name=".dishes_in_details"
+            android:name=".DishDetails"
             android:exported="false" />
         <activity
             android:name=".AddDish"
@@ -27,7 +28,7 @@
             android:name=".foodie.FoodieHomePage"
             android:exported="false" />
         <activity
-            android:name=".login"
+            android:name=".Login"
             android:exported="false" />
         <activity
             android:name=".Signup"

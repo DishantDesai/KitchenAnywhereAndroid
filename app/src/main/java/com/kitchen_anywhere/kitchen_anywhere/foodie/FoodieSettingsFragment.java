@@ -13,7 +13,7 @@ import androidx.fragment.app.Fragment;
 import com.google.firebase.auth.FirebaseAuth;
 import com.kitchen_anywhere.kitchen_anywhere.R;
 import com.kitchen_anywhere.kitchen_anywhere.adapter.settingListAdapter;
-import com.kitchen_anywhere.kitchen_anywhere.login;
+import com.kitchen_anywhere.kitchen_anywhere.Login;
 
 public class FoodieSettingsFragment extends Fragment {
     FirebaseAuth mAuth;
@@ -58,7 +58,7 @@ public class FoodieSettingsFragment extends Fragment {
     }
     public void logout(View view){
         mAuth.signOut();
-        Intent intent = new Intent(getActivity(), login.class);
+        Intent intent = new Intent(getActivity(), Login.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
         getActivity().finish();

@@ -1,8 +1,9 @@
 package com.kitchen_anywhere.kitchen_anywhere.model;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class FoodModel
+public class FoodModel implements Serializable
 {
     private String dishTitle;
     private String description;
@@ -17,7 +18,7 @@ public class FoodModel
     private boolean isVegetarian;
     private Double maxLimit ;
     private Double pendingLimit ;
-
+    private int numberInCart;
     public FoodModel(String dishTitle, String description, String typeOfDish, Double price, String dishImageLink, int star,
                      String chef_id,List<String> favouriteUserID,int categoryId,
                      Double maxLimit, Double pendingLimit,boolean isActive,boolean isVegetarian
@@ -141,5 +142,11 @@ public class FoodModel
 
     public void setStar(int star) {
         this.star = star;
+    }
+    public int getNumberInCart() {
+        return numberInCart;
+    }
+    public void setNumberInCart(int numberInCart) {
+        this.numberInCart = numberInCart;
     }
 }

@@ -10,7 +10,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.kitchen_anywhere.kitchen_anywhere.R;
-import com.kitchen_anywhere.kitchen_anywhere.constant;
+import com.kitchen_anywhere.kitchen_anywhere.helper.constant;
 
 public class ChefProfileFragment extends Fragment {
 

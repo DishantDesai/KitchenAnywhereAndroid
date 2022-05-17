@@ -25,7 +25,7 @@ import com.google.firebase.firestore.QuerySnapshot;
 import com.kitchen_anywhere.kitchen_anywhere.AddDish;
 import com.kitchen_anywhere.kitchen_anywhere.R;
 import com.kitchen_anywhere.kitchen_anywhere.adapter.FoodAdapter;
-import com.kitchen_anywhere.kitchen_anywhere.constant;
+import com.kitchen_anywhere.kitchen_anywhere.helper.constant;
 import com.kitchen_anywhere.kitchen_anywhere.model.FoodModel;
 
 import java.util.ArrayList;

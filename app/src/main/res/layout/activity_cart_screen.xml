@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CartScreen">
+    tools:context=".Cart">
 
     <ScrollView
         android:id="@+id/scrollView3"
@@ -20,7 +20,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text="Cart"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="16dp"
                 android:textAlignment="center"
                 android:textColor="@color/custom_green"
                 android:textSize="20sp"

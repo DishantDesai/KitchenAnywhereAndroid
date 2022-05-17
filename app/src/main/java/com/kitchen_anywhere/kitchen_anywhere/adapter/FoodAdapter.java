@@ -14,14 +14,15 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.kitchen_anywhere.kitchen_anywhere.dishes_in_details;
+import com.kitchen_anywhere.kitchen_anywhere.DishDetails;
 import com.kitchen_anywhere.kitchen_anywhere.model.FoodModel;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import com.kitchen_anywhere.kitchen_anywhere.R;
 
 
-public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.ViewHolder> {
+public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.ViewHolder> implements Serializable {
     ArrayList<FoodModel> foodItems;
     private Activity context;
     public FoodAdapter (Activity context,ArrayList<FoodModel> foodItems) {
@@ -45,13 +46,10 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.ViewHolder> {
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(context, dishes_in_details.class);
-                Bundle bundle = new Bundle();
-                bundle.putString("title", foodItems.get(position).getdishTitle());
-                bundle.putString("description", String.valueOf(foodItems.get(position).getDescription()));
-                bundle.putString("price", "$" + String.valueOf(foodItems.get(position).getPrice()));
-                bundle.putString("image", foodItems.get(position).getdishImageLink());
-                intent.putExtras(bundle);
+                Intent intent = new Intent(context, DishDetails.class);
+
+                intent.putExtra("dish",foodItems.get(position));
+                intent.putExtra("position",position);
 
                 context.startActivity(intent);
             }

@@ -27,6 +27,7 @@ public class FoodiecustomDistListAdapter extends ArrayAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
+
         View row=convertView;
         LayoutInflater inflater = context.getLayoutInflater();
         if(convertView==null)
