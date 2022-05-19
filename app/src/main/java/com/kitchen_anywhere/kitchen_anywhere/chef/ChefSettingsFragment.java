@@ -15,6 +15,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.kitchen_anywhere.kitchen_anywhere.R;
 import com.kitchen_anywhere.kitchen_anywhere.adapter.settingListAdapter;
 import com.kitchen_anywhere.kitchen_anywhere.Login;
+import com.kitchen_anywhere.kitchen_anywhere.foodie.FoodieOrderPage;
 
 public class ChefSettingsFragment extends Fragment {
     FirebaseAuth mAuth;
@@ -45,6 +46,10 @@ public class ChefSettingsFragment extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 switch (i){
+                    case 0:
+                        Intent intent = new Intent(getActivity(), ChefOrderPage.class);
+                        startActivity(intent);
+                        break;
                     case 2:
                         logout(view);
                         break;

@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.KitchenAnywhereAndroid">
         <activity
+            android:name=".chef.ChefOrderPage"
+            android:exported="false" />
+        <activity
             android:name=".foodie.FoodieOrderPage"
             android:exported="false" />
         <activity
