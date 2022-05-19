@@ -18,7 +18,9 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.kitchen_anywhere.kitchen_anywhere.chef.ChefHomePage;
 import com.kitchen_anywhere.kitchen_anywhere.foodie.FoodieHomePage;
+import com.kitchen_anywhere.kitchen_anywhere.helper.constant;
 import com.kitchen_anywhere.kitchen_anywhere.model.UserModel;
+
 
 public class SplashScreenActivity extends AppCompatActivity {
     FirebaseAuth mAuth;
@@ -39,7 +41,7 @@ public class SplashScreenActivity extends AppCompatActivity {
                 FirebaseUser user = mAuth.getCurrentUser();
 
                 if (user == null){
-                    startActivity(new Intent(SplashScreenActivity.this, login.class));
+                    startActivity(new Intent(SplashScreenActivity.this, Login.class));
 
                 }else{
                     String userId=user.getUid();
@@ -52,12 +54,11 @@ public class SplashScreenActivity extends AppCompatActivity {
                                 public void onComplete(@NonNull Task<QuerySnapshot> task) {
                                     if(task.isSuccessful())
                                     {
+                                        System.out.println("get result"+  task.getResult());
                                         for(QueryDocumentSnapshot doc : task.getResult())
                                         {
 //                                            if(doc.getData())
-                                        System.out.println(doc.getData());
-
-
+                                            System.out.println("User"+doc);
                                             constant.CurrentUser  =  new UserModel(doc.getData().get("userID").toString(),
                                                     doc.getData().get("email").toString(),
                                                     doc.getData().get("fullName").toString(),
@@ -67,8 +68,9 @@ public class SplashScreenActivity extends AppCompatActivity {
                                                     (Boolean) doc.getData().get("isChef")
                                             );
 
-                                            System.out.println(constant.CurrentUser);
+                                            System.out.println("inside"+constant.CurrentUser);
                                         }
+                                        System.out.println("outside"+constant.CurrentUser);
                                         if(constant.CurrentUser.getIsChef())
                                         {
                                             startActivity(new Intent(SplashScreenActivity.this, ChefHomePage.class));

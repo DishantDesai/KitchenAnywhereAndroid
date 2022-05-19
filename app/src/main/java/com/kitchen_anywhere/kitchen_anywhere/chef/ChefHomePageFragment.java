@@ -25,7 +25,7 @@ import com.google.firebase.firestore.QuerySnapshot;
 import com.kitchen_anywhere.kitchen_anywhere.AddDish;
 import com.kitchen_anywhere.kitchen_anywhere.R;
 import com.kitchen_anywhere.kitchen_anywhere.adapter.FoodAdapter;
-import com.kitchen_anywhere.kitchen_anywhere.constant;
+import com.kitchen_anywhere.kitchen_anywhere.helper.constant;
 import com.kitchen_anywhere.kitchen_anywhere.model.FoodModel;
 
 import java.util.ArrayList;
@@ -82,14 +82,27 @@ public class ChefHomePageFragment extends Fragment {
                             ArrayList<FoodModel> foodlist = new ArrayList<>();
                             for(QueryDocumentSnapshot doc : task.getResult())
                             {
-                                long price = new Long(doc.getData().get("price").toString());
-                                double mainPrice = price;
+                                double mainPrice = Double.parseDouble(doc.getData().get("price").toString());
+
+                                double maxLimit = Double.parseDouble(doc.getData().get("maxLimit").toString());
+
+                                double pending_limit = Double.parseDouble(doc.getData().get("pending_limit").toString());
+
+                                int categoryId = Integer.parseInt(doc.getData().get("categoryId").toString()) ;
+
                                 foodlist.add (new FoodModel(  doc.getData().get("dishTitle").toString(),
                                         doc.getData().get("description").
                                                 toString(),doc.getData().get("typeOfDish").toString(),
                                         mainPrice,
                                         doc.getData().get("dishImageLink").toString(),5,
-                                        doc.getData().get("chef_id").toString()));
+                                        doc.getData().get("chef_id").toString(),
+                                        new ArrayList<>(),categoryId,
+                                                maxLimit,pending_limit,true,true
+                                        )
+
+
+//                                        doc.getData().get("")
+                                );
                             }
                             constant.alldishdata = foodlist;
                             recyclerViewDishList.setLayoutManager(linearLayoutManager);

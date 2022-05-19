@@ -1,4 +1,5 @@
 package com.kitchen_anywhere.kitchen_anywhere.foodie;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 
@@ -17,13 +18,16 @@ public class FoodieHomePage extends AppCompatActivity implements BottomNavigatio
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        getSupportActionBar().hide();
+        getSupportActionBar().hide();
         setContentView(R.layout.activity_foodie_home_page);
         bottomNavigationView = findViewById(R.id.foodie_bottomNavigationView);
 
         bottomNavigationView.setOnNavigationItemSelectedListener(this);
         bottomNavigationView.setSelectedItemId(R.id.foodie_home);
+
     }
+
+
 
 
     FoodieHomePageFragment FoodieHomePageFragment = new FoodieHomePageFragment();

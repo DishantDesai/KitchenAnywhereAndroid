@@ -14,14 +14,15 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.kitchen_anywhere.kitchen_anywhere.dishes_in_details;
+import com.kitchen_anywhere.kitchen_anywhere.DishDetails;
 import com.kitchen_anywhere.kitchen_anywhere.model.FoodModel;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import com.kitchen_anywhere.kitchen_anywhere.R;
 
 
-public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.ViewHolder> {
+public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.ViewHolder> implements Serializable {
     ArrayList<FoodModel> foodItems;
     private Activity context;
     public FoodAdapter (Activity context,ArrayList<FoodModel> foodItems) {
@@ -38,27 +39,24 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.ViewHolder> {
     }
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder,int position) {
-        holder.title.setText(foodItems.get(position).getTitle());
+        holder.title.setText(foodItems.get(position).getdishTitle());
         holder.price.setText("$" + String.valueOf(foodItems.get(position).getPrice()));
         holder.description.setText(String.valueOf(foodItems.get(position).getDescription()));
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(context, dishes_in_details.class);
-                Bundle bundle = new Bundle();
-                bundle.putString("title", foodItems.get(position).getTitle());
-                bundle.putString("description", String.valueOf(foodItems.get(position).getDescription()));
-                bundle.putString("price", "$" + String.valueOf(foodItems.get(position).getPrice()));
-                bundle.putString("image", foodItems.get(position).getImage());
-                intent.putExtras(bundle);
+                Intent intent = new Intent(context, DishDetails.class);
+
+                intent.putExtra("dish",foodItems.get(position));
+                intent.putExtra("position",position);
 
                 context.startActivity(intent);
             }
         });
 
         Glide.with(holder.itemView.getContext())
-                .load(foodItems.get(position).getImage())
+                .load(foodItems.get(position).getdishImageLink())
                 .into(holder.pic);
 
 

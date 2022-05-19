@@ -9,7 +9,7 @@ import android.widget.TextView;
 import androidx.fragment.app.Fragment;
 
 import com.kitchen_anywhere.kitchen_anywhere.R;
-import com.kitchen_anywhere.kitchen_anywhere.constant;
+import com.kitchen_anywhere.kitchen_anywhere.helper.constant;
 
 public class FoodieProfileFragment extends Fragment {
 
