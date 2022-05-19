@@ -97,7 +97,8 @@ public class ChefHomePageFragment extends Fragment {
                                         doc.getData().get("dishImageLink").toString(),5,
                                         doc.getData().get("chef_id").toString(),
                                         new ArrayList<>(),categoryId,
-                                                maxLimit,pending_limit,true,true
+                                                maxLimit,pending_limit,true,true,
+                                                constant.CurrentUser.getPostal_code()
                                         )
 
 

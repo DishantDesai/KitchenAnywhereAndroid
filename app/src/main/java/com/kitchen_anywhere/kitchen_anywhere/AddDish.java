@@ -195,7 +195,8 @@ public class AddDish extends AppCompatActivity {
                     Double.parseDouble(addDishPriceVal),
                     "https://images.dailyhive.com/20210520142433/172093950_778326749492127_8446874264678364621_n.jpg",5,
                     constant.CurrentUser.getUserID(),
-                    new ArrayList<>(),1,10.0,10.0,true,true
+                    new ArrayList<>(),1,10.0,10.0,true,true,
+                    constant.CurrentUser.getPostal_code()
             ));
         }
         Boolean addDish_dietsVal = ((RadioButton) findViewById(addDish_dietsTemp)).getText().toString().equals("Active") ? true : false;
