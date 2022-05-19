@@ -69,7 +69,7 @@ public class FoodieHomePageFragment extends Fragment {
         progressBar = (ProgressBar)view.findViewById(R.id.foodie_loading);
         topAppBar = (MaterialToolbar)view.findViewById(R.id.topAppBar);
 //        badge = (NotificationBadge)view.findViewById(R.id.badge);
-        topAppBar.setMenu();
+//        topAppBar.setMenu();
         topAppBar.setOnMenuItemClickListener(new MaterialToolbar.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
@@ -164,7 +164,8 @@ public class FoodieHomePageFragment extends Fragment {
                                             doc.getData().get("dishImageLink").toString(),5,
                                             doc.getData().get("chef_id").toString(),
                                             new ArrayList<>(),categoryId,
-                                            maxLimit,pending_limit,true,true
+                                            maxLimit,pending_limit,true,true,
+                                            constant.CurrentUser.getPostal_code()
                                     ));
                                 }
                                 constant.alldishdata = foodlist;

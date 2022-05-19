@@ -11,6 +11,7 @@ public class FoodModel implements Serializable
     private Double price;
     private String dishImageLink;
     private String chef_id;
+    private String postal_code;
     private int categoryId;
     private List<String> favouriteUserID;
     private int star;
@@ -21,7 +22,7 @@ public class FoodModel implements Serializable
     private int numberInCart;
     public FoodModel(String dishTitle, String description, String typeOfDish, Double price, String dishImageLink, int star,
                      String chef_id,List<String> favouriteUserID,int categoryId,
-                     Double maxLimit, Double pendingLimit,boolean isActive,boolean isVegetarian
+                     Double maxLimit, Double pendingLimit,boolean isActive,boolean isVegetarian,String postal_code
                      ) {
         this.dishTitle = dishTitle;
         this.description = description;
@@ -36,7 +37,7 @@ public class FoodModel implements Serializable
         this.pendingLimit = pendingLimit ;
         this.isActive = isActive;
         this.isVegetarian = isVegetarian ;
-
+        this.postal_code = postal_code ;
     }
 
 
@@ -118,6 +119,14 @@ public class FoodModel implements Serializable
 
     public void settypeOfDish(String typeOfDish) {
         this.typeOfDish = typeOfDish;
+    }
+
+    public String getpostal_code() {
+        return postal_code;
+    }
+
+    public void setpostal_code(String postal_code) {
+        this.postal_code = postal_code;
     }
 
     public Double getPrice() {
