@@ -219,23 +219,6 @@ public class AddDish extends AppCompatActivity {
                 Toast.makeText(AddDish.this, "Fail to add data " + e, Toast.LENGTH_SHORT).show();
             }
         });
-
-
-//        firebaseDatabase.collection("cities").document("LA").set(city);
-//
-//
-//        databaseReference.addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                databaseReference.push().setValue(food);
-//                Toast.makeText(AddDish.this, "data added", Toast.LENGTH_SHORT).show();
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError error) {
-//                Toast.makeText(AddDish.this, "Fail to add data " + error, Toast.LENGTH_SHORT).show();
-//            }
-//        });
     }
 
     // UploadImage method

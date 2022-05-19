@@ -101,8 +101,6 @@ public class ChefHomePageFragment extends Fragment {
                                                 constant.CurrentUser.getPostal_code()
                                         )
 
-
-//                                        doc.getData().get("")
                                 );
                             }
                             constant.alldishdata = foodlist;
