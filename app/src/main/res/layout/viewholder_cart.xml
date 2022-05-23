@@ -31,9 +31,20 @@
         android:textSize="18sp"
         android:textStyle="normal"
         app:layout_constraintBottom_toBottomOf="@+id/titleTxt"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/delete_cart_item"
         app:layout_constraintTop_toTopOf="@+id/titleTxt" />
-
+    <ImageButton
+        android:id="@+id/delete_cart_item"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:src="@drawable/ic_baseline_delete_24"
+        android:background="@drawable/cart_delete_background"
+        android:padding="5dp"
+        android:layout_marginRight="10dp"
+        />
     <ImageView
         android:id="@+id/pic"
         android:layout_width="100dp"

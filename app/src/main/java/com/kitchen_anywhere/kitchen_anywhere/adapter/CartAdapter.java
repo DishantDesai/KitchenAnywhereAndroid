@@ -1,9 +1,11 @@
 package com.kitchen_anywhere.kitchen_anywhere.adapter;
 
 import android.content.Context;
+import android.media.Image;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -13,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.kitchen_anywhere.kitchen_anywhere.Interface.ChangeCartItem;
 import com.kitchen_anywhere.kitchen_anywhere.R;
+import com.kitchen_anywhere.kitchen_anywhere.helper.constant;
 import com.kitchen_anywhere.kitchen_anywhere.model.FoodModel;
 
 import java.util.ArrayList;
@@ -27,7 +30,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View inflate = LayoutInflater.from(parent.getContext()).inflate(R.layout.viewholer_cart, parent, false);
+        View inflate = LayoutInflater.from(parent.getContext()).inflate(R.layout.viewholder_cart, parent, false);
 
         return new ViewHolder(inflate);
     }
@@ -35,8 +38,8 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.title.setText(cartItems.get(position).getdishTitle());
-        holder.feeEachItem.setText(String.valueOf(cartItems.get(position).getPrice()));
-        holder.totalEachItem.setText(String.valueOf(Math.round((cartItems.get(position).getNumberInCart() * cartItems.get(position).getPrice()) * 100) / 100));
+        holder.feeEachItem.setText("$" + String.valueOf(cartItems.get(position).getPrice()));
+        holder.totalEachItem.setText("$" +String.valueOf(Math.round((cartItems.get(position).getNumberInCart() * cartItems.get(position).getPrice()) * 100) / 100));
         holder.num.setText(String.valueOf(cartItems.get(position).getNumberInCart()));
         Glide.with(holder.itemView.getContext())
                 .load(cartItems.get(position).getdishImageLink())
@@ -52,7 +55,17 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
         holder.minusItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                cartItems.get(position).setNumberInCart(cartItems.get(position).getNumberInCart() - 1);
+                if(cartItems.get(position).getNumberInCart() > 0){
+                    cartItems.get(position).setNumberInCart(cartItems.get(position).getNumberInCart() - 1);
+                    notifyDataSetChanged();
+                    changeCartItem.changed();
+                }
+            }
+        });
+        holder.deleteCartItem.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                constant.cartItems.remove(position);
                 notifyDataSetChanged();
                 changeCartItem.changed();
             }
@@ -67,7 +80,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
         TextView title, feeEachItem;
         ImageView pic, plusItem, minusItem;
         TextView totalEachItem, num;
-
+        ImageButton deleteCartItem;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             title = itemView.findViewById(R.id.titleTxt);
@@ -77,6 +90,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
             num = itemView.findViewById(R.id.numberItemTxt);
             plusItem = itemView.findViewById(R.id.plusCartBtn);
             minusItem = itemView.findViewById(R.id.minusCartBtn);
+            deleteCartItem = itemView.findViewById(R.id.delete_cart_item);
         }
     }
 }

@@ -81,26 +81,27 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.073"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/search_dish" />
-
-    <EditText
-        android:id="@+id/search_dish"
-        android:layout_width="0dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/search_background"
-        android:ems="10"
-        android:hint="Search your favourite food"
-        android:inputType="textPersonName"
-        android:paddingStart="20dp"
-        android:drawableStart="@drawable/ic_baseline_search_24"
-        android:drawablePadding="10dp"
-        app:layout_constraintBottom_toTopOf="@id/foodie_textView"
-        app:layout_constraintEnd_toEndOf="@id/image_slider"
-        app:layout_constraintHorizontal_bias="0.6"
-        app:layout_constraintStart_toStartOf="@id/image_slider"
         app:layout_constraintTop_toBottomOf="@id/image_slider" />
+
+<!--    <EditText-->
+<!--        android:id="@+id/search_dish"-->
+<!--        android:layout_width="0dp"-->
+<!--        android:layout_height="50dp"-->
+<!--        android:layout_marginTop="10dp"-->
+<!--        android:background="@drawable/search_background"-->
+<!--        android:ems="10"-->
+<!--        android:hint="Search your favourite food"-->
+<!--        android:inputType="textPersonName"-->
+<!--        android:paddingStart="20dp"-->
+<!--        android:drawableStart="@drawable/ic_baseline_search_24"-->
+<!--        android:drawablePadding="10dp"-->
+<!--        app:layout_constraintBottom_toTopOf="@id/foodie_textView"-->
+<!--        app:layout_constraintEnd_toEndOf="@id/image_slider"-->
+<!--        app:layout_constraintHorizontal_bias="0.6"-->
+<!--        app:layout_constraintStart_toStartOf="@id/image_slider"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/image_slider" />-->
     <TextView
+        android:id="@+id/view_more"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="32dp"
