@@ -21,8 +21,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:lottie_url="https://assets4.lottiefiles.com/packages/lf20_39zdcshd.json"
-            app:lottie_autoPlay="false"
-            app:lottie_loop="false"/>
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"/>
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

@@ -201,9 +201,9 @@ public class Login extends AppCompatActivity {
                                 constant.CurrentUser  =  new UserModel(doc.getData().get("userID").toString(),
                                         doc.getData().get("email").toString(),
                                         doc.getData().get("fullName").toString(),
-                                        doc.getData().get("address") != null ? doc.getData().get("address").toString() : "Montreal",
-                                        doc.getData().get("postal_code") != null ? doc.getData().get("postal_code").toString(): "H1V1A8",
-                                        doc.getData().get("phoneNo") != null ? doc.getData().get("phoneNo").toString(): "513-124-4142",
+                                        doc.getData().get("address").toString(),
+                                        doc.getData().get("postal_code").toString(),
+                                        doc.getData().get("phoneNo").toString(),
                                         (Boolean) doc.getData().get("isChef")
                                 );
 
@@ -230,9 +230,9 @@ public class Login extends AppCompatActivity {
         Map<String,Object> user = new HashMap<>();
         user.put("fullName",acct.getDisplayName());
         user.put("email",acct.getEmail());
-        user.put("phoneNo",null);
-        user.put("address",null);
-        user.put("postal_code",null);
+        user.put("phoneNo","513-124-4142");
+        user.put("address","Montreal");
+        user.put("postal_code","H1V1A8");
         user.put("isChef", false);
         user.put("userID",userID);
         user.put("userStatus","pending");

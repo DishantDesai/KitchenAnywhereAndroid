@@ -45,6 +45,7 @@
         <entry key="app/src/main/res/layout/viewholer_cart.xml" value="0.1609375" />
         <entry key="app/src/main/res/menu/bottom_nav_menu_chef.xml" value="0.30092592592592593" />
         <entry key="app/src/main/res/menu/bottom_nav_menu_foodie.xml" value="0.1609375" />
+        <entry key="app/src/main/res/menu/top_app_bar_menu.xml" value="0.22592592592592592" />
       </map>
     </option>
   </component>
