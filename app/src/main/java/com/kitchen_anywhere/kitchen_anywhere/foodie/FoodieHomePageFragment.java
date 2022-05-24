@@ -19,6 +19,9 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.denzcoskun.imageslider.ImageSlider;
 import com.denzcoskun.imageslider.constants.ScaleTypes;
 import com.denzcoskun.imageslider.models.SlideModel;
@@ -31,23 +34,28 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.kitchen_anywhere.kitchen_anywhere.API.PostalApIController;
+import com.kitchen_anywhere.kitchen_anywhere.API.PostalCodeController;
 import com.kitchen_anywhere.kitchen_anywhere.Cart;
 import com.kitchen_anywhere.kitchen_anywhere.DishDetails;
 import com.kitchen_anywhere.kitchen_anywhere.R;
 import com.kitchen_anywhere.kitchen_anywhere.adapter.FoodAdapter;
 import com.kitchen_anywhere.kitchen_anywhere.helper.constant;
+import com.kitchen_anywhere.kitchen_anywhere.interfaces.redirection;
 import com.kitchen_anywhere.kitchen_anywhere.model.FoodModel;
+import com.kitchen_anywhere.kitchen_anywhere.model.postalCodeModels.PostalCode;
 
 import java.util.ArrayList;
 
-public class FoodieHomePageFragment extends Fragment {
+public class FoodieHomePageFragment extends Fragment implements redirection {
     ImageSlider imageSlider;
-    private RecyclerView.Adapter dishAdapter;
+    private FoodAdapter dishAdapter;
     private RecyclerView  recyclerViewDishList;
     private MaterialToolbar topAppBar;
     TextView badgeCounter,viewMore;
     MenuItem menuItem;
     private boolean isInitial=true;
+    private RequestQueue queue;
 
     //    private NotificationBadge badge;
     public FoodieHomePageFragment() {
@@ -109,8 +117,9 @@ public class FoodieHomePageFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setHasOptionsMenu(true);//Make sure you have this line of code.
+        queue = Volley.newRequestQueue(this.getContext());
+
     }
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
@@ -142,7 +151,9 @@ public class FoodieHomePageFragment extends Fragment {
 //        }
         super.onCreateOptionsMenu(menu,inflater);
     }
-    private void getDish(View view)
+
+    PostalApIController ctr;
+    public void getDish(View view)
     {
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity(),LinearLayoutManager.VERTICAL,false);
@@ -159,6 +170,7 @@ public class FoodieHomePageFragment extends Fragment {
                             {
 
                                 ArrayList<FoodModel> foodlist = new ArrayList<>();
+
                                 for(QueryDocumentSnapshot doc : task.getResult())
                                 {
                                     System.out.println("price"+ doc.getData().get("price").getClass());
@@ -176,8 +188,10 @@ public class FoodieHomePageFragment extends Fragment {
                                             doc.getData().get("chef_id").toString(),
                                             new ArrayList<>(),categoryId,
                                             maxLimit,pending_limit,true,true,
-                                            constant.CurrentUser.getPostal_code()
+//                                            constant.CurrentUser.getPostal_code()
+                                            doc.getData().get("postal_code").toString()
                                     ));
+
                                 }
                                 constant.alldishdata = foodlist;
                                 recyclerViewDishList.setLayoutManager(linearLayoutManager);
@@ -193,6 +207,16 @@ public class FoodieHomePageFragment extends Fragment {
                                 recyclerViewDishList.setAdapter(dishAdapter);
                                 progressBar.setVisibility(View.INVISIBLE);
                                 recyclerViewDishList.setVisibility(View.VISIBLE);
+
+                                System.out.println(constant.CurrentUser.getPostal_code()+"--------------------------------------------------------------------------------------------"+constant.alldishdata.size());
+                                String PCode = constant.CurrentUser.getPostal_code().substring(0,3)+"+"+constant.CurrentUser.getPostal_code().substring(3);
+                                 ctr = new PostalApIController();
+                                StringRequest stringRequest = ctr.searchPostalRequest(PCode,FoodieHomePageFragment.this);
+                                stringRequest.setTag("postal");
+                                queue.add(stringRequest);
+
+
+
                             }
                         }
                     }
@@ -212,5 +236,33 @@ public class FoodieHomePageFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+    }
+
+    @Override
+    public void callFucntion() {
+        constant.Matchdishdata.clear();
+        for (FoodModel fm: constant.alldishdata) {
+            String FBPostal = fm.getpostal_code();
+            FBPostal = FBPostal.substring(0,3)+" "+FBPostal.substring(3);
+            System.out.println(FBPostal + "-------------------- " + ctr.postalList.size());
+            for (PostalCode pc: ctr.postalList) {
+                System.out.println(FBPostal + "  ================  " + pc.getPostalCode());
+                if(FBPostal.equals(pc.getPostalCode()))
+                {
+                    System.out.println("Matches ----------------------------------------------------" + FBPostal);
+                    constant.Matchdishdata.add(fm);
+                }
+
+            }
+
+        }
+
+        System.out.println("--------------------------------------------------------------------------------------------" + constant.Matchdishdata.size());
+
+        if(constant.Matchdishdata.size() != 0)
+        {
+            dishAdapter.updateData(constant.Matchdishdata);
+        }
+//        dishAdapter.updateData(constant.Matchdishdata);
     }
 }
