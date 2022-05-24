@@ -10,5 +10,8 @@ public class constant {
 
     public static UserModel CurrentUser;
     public static List<FoodModel> alldishdata;
+
+    public static ArrayList<FoodModel> Matchdishdata = new ArrayList<>();
+
     public static  List<FoodModel> cartItems = new ArrayList<>() ;
 }
