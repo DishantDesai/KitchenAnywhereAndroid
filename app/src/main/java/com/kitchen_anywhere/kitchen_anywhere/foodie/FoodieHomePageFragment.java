@@ -32,6 +32,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.kitchen_anywhere.kitchen_anywhere.Cart;
+import com.kitchen_anywhere.kitchen_anywhere.DishDetails;
 import com.kitchen_anywhere.kitchen_anywhere.R;
 import com.kitchen_anywhere.kitchen_anywhere.adapter.FoodAdapter;
 import com.kitchen_anywhere.kitchen_anywhere.helper.constant;
@@ -44,7 +45,7 @@ public class FoodieHomePageFragment extends Fragment {
     private RecyclerView.Adapter dishAdapter;
     private RecyclerView  recyclerViewDishList;
     private MaterialToolbar topAppBar;
-    TextView badgeCounter;
+    TextView badgeCounter,viewMore;
     MenuItem menuItem;
     private boolean isInitial=true;
 
@@ -68,6 +69,16 @@ public class FoodieHomePageFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_foodie_home_page_fragment, container, false);
         progressBar = (ProgressBar)view.findViewById(R.id.foodie_loading);
         topAppBar = (MaterialToolbar)view.findViewById(R.id.topAppBar);
+        viewMore = (TextView)view.findViewById(R.id.view_more);
+        viewMore.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                System.out.println("call view more");
+                Intent intent = new Intent(getActivity(), ViewMoreDishes.class);
+                startActivity(intent);
+//                getActivity().finish();
+            }
+        });
 //        badge = (NotificationBadge)view.findViewById(R.id.badge);
 //        topAppBar.setMenu();
         topAppBar.setOnMenuItemClickListener(new MaterialToolbar.OnMenuItemClickListener() {
@@ -131,7 +142,7 @@ public class FoodieHomePageFragment extends Fragment {
 //        }
         super.onCreateOptionsMenu(menu,inflater);
     }
-    public void getDish(View view)
+    private void getDish(View view)
     {
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity(),LinearLayoutManager.VERTICAL,false);
@@ -170,7 +181,15 @@ public class FoodieHomePageFragment extends Fragment {
                                 }
                                 constant.alldishdata = foodlist;
                                 recyclerViewDishList.setLayoutManager(linearLayoutManager);
-                                dishAdapter = new FoodAdapter(getActivity(), (ArrayList<FoodModel>) constant.alldishdata);
+                                ArrayList<FoodModel> homeScreenDishItems = new ArrayList<FoodModel>();
+                                if(constant.alldishdata.size() > 5){
+                                    for(int i = 0; i < 5; i++) {
+                                        homeScreenDishItems.add(constant.alldishdata.get(i));
+                                    }
+                                }else{
+                                    homeScreenDishItems = (ArrayList<FoodModel>) constant.alldishdata;
+                                }
+                                dishAdapter = new FoodAdapter(getActivity(), homeScreenDishItems);
                                 recyclerViewDishList.setAdapter(dishAdapter);
                                 progressBar.setVisibility(View.INVISIBLE);
                                 recyclerViewDishList.setVisibility(View.VISIBLE);

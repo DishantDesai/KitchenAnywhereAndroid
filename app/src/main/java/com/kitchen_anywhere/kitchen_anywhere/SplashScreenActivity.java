@@ -62,9 +62,9 @@ public class SplashScreenActivity extends AppCompatActivity {
                                             constant.CurrentUser  =  new UserModel(doc.getData().get("userID").toString(),
                                                     doc.getData().get("email").toString(),
                                                     doc.getData().get("fullName").toString(),
-                                                    doc.getData().get("address").toString(),
-                                                    doc.getData().get("postal_code").toString(),
-                                                    doc.getData().get("phoneNo").toString(),
+                                                    doc.getData().get("address") != null ? doc.getData().get("address").toString() : "Montreal",
+                                                    doc.getData().get("postal_code") != null ? doc.getData().get("postal_code").toString(): "H1V1A8",
+                                                    doc.getData().get("phoneNo") != null ? doc.getData().get("phoneNo").toString(): "513-124-4142",
                                                     (Boolean) doc.getData().get("isChef")
                                             );
 

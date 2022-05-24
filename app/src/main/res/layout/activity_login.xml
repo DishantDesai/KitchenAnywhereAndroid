@@ -102,40 +102,33 @@
         android:layout_height="wrap_content"
         android:text="Don't have an account ? Sign Up"
         android:textColor="#000"
-
-
-        app:layout_constraintBottom_toTopOf="@id/imageButton3"
+        app:layout_constraintBottom_toTopOf="@id/signIn_options"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.50"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/login"
-        app:layout_constraintVertical_bias="0.305" />
-
-    <ImageButton
-        android:id="@+id/imageButton3"
-        android:layout_width="wrap_content"
+        app:layout_constraintVertical_bias="0.05" />
+    <LinearLayout
+        android:id="@+id/signIn_options"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="20dp"
-        android:backgroundTint="@color/secondary"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.336"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintVertical_bias="0.205"
-        app:srcCompat="@android:drawable/btn_star" />
-
-    <ImageButton
-        android:id="@+id/imageButton4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="20dp"
-        android:backgroundTint="@color/secondary"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.312"
-        app:layout_constraintStart_toEndOf="@+id/imageButton3"
-        app:layout_constraintVertical_bias="0.205"
-        app:srcCompat="@android:drawable/ic_dialog_email" />
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:layout_marginBottom="20dp"
+        >
+        <ImageView
+            android:id="@+id/google_signIn"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginRight="35dp"
+            app:srcCompat="@drawable/google" />
+        <ImageView
+            android:id="@+id/facebook_signIn"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            app:srcCompat="@drawable/fb_logo" />
+    </LinearLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
