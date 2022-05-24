@@ -46,6 +46,10 @@ public class FoodieSettingsFragment extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 switch (i){
+                    case 0:
+                        Intent intent = new Intent(getActivity(), FoodieOrderPage.class);
+                        startActivity(intent);
+                        break;
                     case 2:
                         logout(view);
                         break;

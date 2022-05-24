@@ -1,6 +1,7 @@
 package com.kitchen_anywhere.kitchen_anywhere.helper;
 
 import com.kitchen_anywhere.kitchen_anywhere.model.FoodModel;
+import com.kitchen_anywhere.kitchen_anywhere.model.OrderModel;
 import com.kitchen_anywhere.kitchen_anywhere.model.UserModel;
 
 import java.util.ArrayList;
@@ -10,5 +11,6 @@ public class constant {
 
     public static UserModel CurrentUser;
     public static List<FoodModel> alldishdata;
+    public static List<OrderModel> allorderdata;
     public static  List<FoodModel> cartItems = new ArrayList<>() ;
 }
