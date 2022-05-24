@@ -5,6 +5,7 @@
         android:id="@+id/action_cart"
         android:actionLayout="@layout/notification_badge"
         android:title="12"
+        android:icon="@drawable/ic_baseline_shopping_cart_24"
         app:showAsAction="always"
         />
 </menu>

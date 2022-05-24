@@ -19,6 +19,8 @@ import com.kitchen_anywhere.kitchen_anywhere.model.FoodModel;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
+
 import com.kitchen_anywhere.kitchen_anywhere.R;
 
 
@@ -37,6 +39,13 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.ViewHolder> im
         View inflate = LayoutInflater.from(parent.getContext()).inflate(R.layout.foodie_home_listview, parent, false);
         return new ViewHolder (inflate);
     }
+
+    public void updateData(ArrayList<FoodModel> matchFood)
+    {
+        this.foodItems = matchFood;
+        notifyDataSetChanged();
+    }
+
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder,int position) {
         holder.title.setText(foodItems.get(position).getdishTitle());
