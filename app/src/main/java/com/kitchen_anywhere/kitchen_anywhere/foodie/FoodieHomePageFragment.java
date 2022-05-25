@@ -81,7 +81,7 @@ public class FoodieHomePageFragment extends Fragment implements redirection {
         viewMore.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                System.out.println("call view more");
+
                 Intent intent = new Intent(getActivity(), ViewMoreDishes.class);
                 startActivity(intent);
 //                getActivity().finish();
@@ -180,7 +180,7 @@ public class FoodieHomePageFragment extends Fragment implements redirection {
                                     int categoryId = Integer.parseInt(doc.getData().get("categoryId").toString());
 
 
-                                    foodlist.add (new FoodModel(  doc.getData().get("dishTitle").toString(),
+                                    foodlist.add (new FoodModel( doc.getId().toString(), doc.getData().get("dishTitle").toString(),
                                             doc.getData().get("description").
                                                     toString(),doc.getData().get("typeOfDish").toString(),
                                             mainPrice,
@@ -208,15 +208,11 @@ public class FoodieHomePageFragment extends Fragment implements redirection {
                                 progressBar.setVisibility(View.INVISIBLE);
                                 recyclerViewDishList.setVisibility(View.VISIBLE);
 
-                                System.out.println(constant.CurrentUser.getPostal_code()+"--------------------------------------------------------------------------------------------"+constant.alldishdata.size());
                                 String PCode = constant.CurrentUser.getPostal_code().substring(0,3)+"+"+constant.CurrentUser.getPostal_code().substring(3);
                                  ctr = new PostalApIController();
                                 StringRequest stringRequest = ctr.searchPostalRequest(PCode,FoodieHomePageFragment.this);
                                 stringRequest.setTag("postal");
                                 queue.add(stringRequest);
-
-
-
                             }
                         }
                     }

@@ -79,7 +79,6 @@ public class Cart extends AppCompatActivity {
                 int x = random.nextInt(10000);
                 addDataToFirebase(new OrderModel(constant.cartItems.get(0).getChef_id(),constant.CurrentUser.getPhoneNo(),constant.cartItems,
                         constant.CurrentUser.getFullName(),d,constant.CurrentUser.getUserID()+x,"pending",constant.CurrentUser.getUserID()
-
                 ));
             }
         });
