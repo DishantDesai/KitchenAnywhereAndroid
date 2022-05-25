@@ -28,25 +28,19 @@ import java.util.List;
 public class ChefOrderPage extends AppCompatActivity {
 
     RecyclerView recyclerView;
-    ChefOrderSectionAdapter chefOrderSectionAdapter;
+    private ChefOrderSectionAdapter chefOrderSectionAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chef_order_page);
-
         getOrderData();
-
-        System.out.println("-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^" + constant.allorderdata.size());
-
-
-        System.out.println("-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^22222^^");
-
     }
 
     void getOrderData()
     {
-        ArrayList<OrderModel> orderlist = new ArrayList<>();
+        recyclerView = (RecyclerView) findViewById(R.id.recycle_chef_order);
+
         FirebaseFirestore.getInstance().collection("Order").whereEqualTo("chefId", constant.CurrentUser.getUserID()).get().
 
                 addOnCompleteListener(
@@ -58,13 +52,13 @@ public class ChefOrderPage extends AppCompatActivity {
                                 {
 
                                     ArrayList<OrderModel> orderlist = new ArrayList<>();
-                                    List<FoodModel> foodlist = new ArrayList<>();
+                                    ArrayList<FoodModel> foodlist = new ArrayList<>();
                                     for(QueryDocumentSnapshot doc : task.getResult())
                                     {
                                         HashMap<String, String> map = new HashMap<String, String>();
                                         Timestamp t= (Timestamp) doc.getData().get("orderDate");
                                         Date d = t.toDate();
-                                        foodlist = (List<FoodModel>) doc.getData().get("dishList");
+                                        foodlist = (ArrayList<FoodModel>) doc.getData().get("dishList");
                                         orderlist.add(new OrderModel(doc.getData().get("chefId").toString(),
                                                 doc.getData().get("contactOfFoodie").toString(),foodlist,
                                                 doc.getData().get("nameOfFoodie").toString(),
@@ -77,10 +71,9 @@ public class ChefOrderPage extends AppCompatActivity {
                                     }
                                     constant.allorderdata = orderlist;
 
-
                                     //getting the recyclerview from xml
-                                    recyclerView = (RecyclerView) findViewById(R.id.recycle_chef_order);
-                                    recyclerView.setHasFixedSize(true);
+
+//                                    recyclerView.setHasFixedSize(true);
                                     recyclerView.setLayoutManager(new LinearLayoutManager(ChefOrderPage.this));
 //
 //                                  //creating recyclerview adapter

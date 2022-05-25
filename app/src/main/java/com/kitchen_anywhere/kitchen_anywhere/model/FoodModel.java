@@ -1,9 +1,10 @@
 package com.kitchen_anywhere.kitchen_anywhere.model;
 
 import java.io.Serializable;
+import java.util.HashMap;
 import java.util.List;
 
-public class FoodModel implements Serializable
+public class FoodModel extends HashMap<String, Object> implements Serializable
 {
     private String dishTitle;
     private String description;

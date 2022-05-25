@@ -7,9 +7,11 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.kitchen_anywhere.kitchen_anywhere.R;
+import com.kitchen_anywhere.kitchen_anywhere.chef.ChefOrderPage;
 import com.kitchen_anywhere.kitchen_anywhere.model.FoodModel;
 import com.kitchen_anywhere.kitchen_anywhere.model.OrderModel;
 
@@ -54,10 +56,11 @@ public class ChefOrderSectionAdapter extends RecyclerView.Adapter<ChefOrderSecti
         holder.contactOfFoodie.setText(order.getcontactOfFoodie());
         holder.txt_order_status.setText(order.getorderStatus());
 
-        ArrayList<FoodModel> foods = (ArrayList<FoodModel>) order.getdishList();
-
+        ArrayList<FoodModel> foods = order.getdishList();
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this.context,LinearLayoutManager.VERTICAL,false);
+        holder.childRecyclerView.setLayoutManager(linearLayoutManager);
         ChefOrderAdapter chidRecycleAdepter = new ChefOrderAdapter(this.context,foods);
-        System.out.println("------call onbindviewholder");
+//        System.out.println("------call onbindviewholder");
         holder.childRecyclerView.setAdapter(chidRecycleAdepter);
 
     }

@@ -90,7 +90,7 @@ public class ChefHomePageFragment extends Fragment {
 
                                 int categoryId = Integer.parseInt(doc.getData().get("categoryId").toString()) ;
 
-                                foodlist.add (new FoodModel(  doc.getData().get("dishTitle").toString(),
+                                foodlist.add(new FoodModel(  doc.getData().get("dishTitle").toString(),
                                         doc.getData().get("description").
                                                 toString(),doc.getData().get("typeOfDish").toString(),
                                         mainPrice,

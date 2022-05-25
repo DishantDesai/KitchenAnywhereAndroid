@@ -12,33 +12,29 @@
         <entry key="..\:/cegep/MAD_Project_Block4/KitchenAnywhereAndroid/app/src/main/res/layout/fragment_chef_home_page_fragment.xml" value="0.25416666666666665" />
         <entry key="..\:/cegep/MAD_Project_Block4/KitchenAnywhereAndroid/app/src/main/res/layout/fragment_chef_profile_fragment.xml" value="0.11548913043478261" />
         <entry key="..\:/cegep/MAD_Project_Block4/KitchenAnywhereAndroid/app/src/main/res/layout/fragment_chef_settings_fragment.xml" value="0.11548913043478261" />
-        <entry key="app/src/main/res/drawable-v24/yellow_bar.xml" value="0.177" />
-        <entry key="app/src/main/res/drawable/badge.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable-v24/green_bar.xml" value="0.106" />
         <entry key="app/src/main/res/drawable/card_shadow_background.xml" value="0.1955" />
-        <entry key="app/src/main/res/drawable/green_button.xml" value="0.1055" />
+        <entry key="app/src/main/res/drawable/cart_delete_background.xml" value="0.106" />
         <entry key="app/src/main/res/drawable/ic_baseline_add_24.xml" value="0.1395" />
         <entry key="app/src/main/res/drawable/ic_baseline_exit_to_app_24.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_baseline_fastfood_24.xml" value="0.147" />
         <entry key="app/src/main/res/drawable/ic_baseline_favorite_24.xml" value="0.188" />
         <entry key="app/src/main/res/drawable/ic_baseline_list_alt_24.xml" value="0.188" />
-        <entry key="app/src/main/res/drawable/ic_baseline_remove_24.xml" value="0.1955" />
         <entry key="app/src/main/res/drawable/search_background.xml" value="0.1955" />
-        <entry key="app/src/main/res/layout/action_bar_notification_icon.xml" value="0.3445022583007813" />
         <entry key="app/src/main/res/layout/activity_add_dish.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_add_dishes.xml" value="0.2234375" />
         <entry key="app/src/main/res/layout/activity_cart_screen.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_chef_home_page.xml" value="0.15476190476190477" />
-        <entry key="app/src/main/res/layout/activity_chef_order_page.xml" value="0.23629150390625" />
+        <entry key="app/src/main/res/layout/activity_chef_order_page.xml" value="0.19739583333333333" />
         <entry key="app/src/main/res/layout/activity_chef_setting_list_view.xml" value="0.15476190476190477" />
         <entry key="app/src/main/res/layout/activity_dishes_in_details.xml" value="0.240960693359375" />
         <entry key="app/src/main/res/layout/activity_foodie_home_page.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.15476190476190477" />
         <entry key="app/src/main/res/layout/activity_signup.xml" value="0.1609375" />
         <entry key="app/src/main/res/layout/activity_splash_screen.xml" value="0.21822916666666667" />
-        <entry key="app/src/main/res/layout/activity_view_more_dishes.xml" value="0.21302083333333333" />
+        <entry key="app/src/main/res/layout/activity_view_more_dishes.xml" value="0.1" />
         <entry key="app/src/main/res/layout/chef_home_listview.xml" value="0.18070652173913043" />
-        <entry key="app/src/main/res/layout/chef_order_item.xml" value="0.21302083333333333" />
-        <entry key="app/src/main/res/layout/chef_order_section.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/chef_order_section.xml" value="0.4064376831054688" />
         <entry key="app/src/main/res/layout/chef_setting_list_view.xml" value="0.1" />
         <entry key="app/src/main/res/layout/foodie_home_listview.xml" value="0.15476190476190477" />
         <entry key="app/src/main/res/layout/fragment_chef_home_page_fragment.xml" value="0.15476190476190477" />
@@ -46,13 +42,12 @@
         <entry key="app/src/main/res/layout/fragment_chef_settings_fragment.xml" value="0.15476190476190477" />
         <entry key="app/src/main/res/layout/fragment_foodie_home_page_fragment.xml" value="0.15476190476190477" />
         <entry key="app/src/main/res/layout/fragment_foodie_profile_fragment.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/notification_badge.xml" value="0.60797119140625" />
         <entry key="app/src/main/res/layout/rounded_corner.xml" value="0.23489583333333333" />
-        <entry key="app/src/main/res/layout/viewholder_cart.xml" value="0.21302083333333333" />
-        <entry key="app/src/main/res/layout/viewholer_cart.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/viewholder_cart.xml" value="0.6193267822265626" />
+        <entry key="app/src/main/res/layout/viewholer_cart.xml" value="0.1609375" />
         <entry key="app/src/main/res/menu/bottom_nav_menu_chef.xml" value="0.30092592592592593" />
         <entry key="app/src/main/res/menu/bottom_nav_menu_foodie.xml" value="0.1609375" />
-        <entry key="app/src/main/res/menu/top_app_bar_menu.xml" value="0.37078704833984377" />
+        <entry key="app/src/main/res/menu/top_app_bar_menu.xml" value="0.22592592592592592" />
       </map>
     </option>
   </component>

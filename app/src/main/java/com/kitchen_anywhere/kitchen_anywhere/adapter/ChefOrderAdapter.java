@@ -10,15 +10,17 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.kitchen_anywhere.kitchen_anywhere.R;
 import com.kitchen_anywhere.kitchen_anywhere.model.FoodModel;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class ChefOrderAdapter extends RecyclerView.Adapter<ChefOrderAdapter.ChefOrderViewHolder>{
 
-    ArrayList<FoodModel> foodItems;
+    private ArrayList<FoodModel> foodItems;
     private Activity context;
     public ChefOrderAdapter (Activity context,ArrayList<FoodModel> foodItems) {
         this.foodItems = foodItems;
@@ -38,13 +40,20 @@ public class ChefOrderAdapter extends RecyclerView.Adapter<ChefOrderAdapter.Chef
     @Override
     public void onBindViewHolder(@NonNull ChefOrderViewHolder holder, int position) {
         //getting the product of the specified position
-        FoodModel food = foodItems.get(position);
-
+        System.out.println(position);
+        ArrayList<FoodModel> temp = foodItems;
+        HashMap<String,Object> food = foodItems.get(position);
         //binding the data with the viewholder views
-        holder.txtTitle.setText(food.getdishTitle());
-        holder.txtQty.setText(food.getNumberInCart());
-        holder.txtPrice.setText(String.valueOf(food.getPrice()));
+//        System.out.println(foodItems.get(position).toString());
 
+
+
+        holder.txtTitle.setText(String.valueOf(food.get("dishTitle")));
+        holder.txtQty.setText(String.valueOf(food.get("qty")));
+        holder.txtPrice.setText(String.valueOf(food.get("price")));
+        Glide.with(holder.itemView.getContext())
+                .load(String.valueOf(food.get("dishImageLink")))
+                .into(holder.img);
 //        holder.img.setImageDrawable(this.context.getResources().getDrawable(food.getdishImageLink()));
 
     }
