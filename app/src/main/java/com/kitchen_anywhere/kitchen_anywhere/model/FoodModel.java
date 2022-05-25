@@ -156,10 +156,10 @@ public class FoodModel implements Serializable
     public void setStar(int star) {
         this.star = star;
     }
-    public int getNumberInCart() {
+    public int getQty() {
         return qty;
     }
-    public void setNumberInCart(int qty) {
+    public void setQty(int qty) {
         this.qty = qty;
     }
 }

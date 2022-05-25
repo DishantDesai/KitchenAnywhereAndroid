@@ -15,7 +15,6 @@ import com.kitchen_anywhere.kitchen_anywhere.helper.constant;
 import com.kitchen_anywhere.kitchen_anywhere.model.FoodModel;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 
 public class DishDetails extends AppCompatActivity implements Serializable {
     FloatingActionButton incrementQtyBtn,decrementQtyBtn;
@@ -42,8 +41,8 @@ public class DishDetails extends AppCompatActivity implements Serializable {
             }
         }
         if(constant.cartItems.size() > 0 && filteredItem != null){
-            qty = filteredItem.getNumberInCart();
-            countLabel.setText(String.valueOf(filteredItem.getNumberInCart()));
+            qty = filteredItem.getQty();
+            countLabel.setText(String.valueOf(filteredItem.getQty()));
         }
         incrementQtyBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -68,12 +67,12 @@ public class DishDetails extends AppCompatActivity implements Serializable {
             @Override
             public void onClick(View view) {
                 if(constant.cartItems.size() > 0 && filteredItem != null){
-                    constant.cartItems.get(constant.cartItems.size() - 1).setNumberInCart(qty);
+                    constant.cartItems.get(constant.cartItems.size() - 1).setQty(qty);
                     Intent intent = new Intent(DishDetails.this, Cart.class);
                     startActivity(intent);
                 }else if(qty > 0){
                     constant.cartItems.add(dish);
-                    constant.cartItems.get(constant.cartItems.size() - 1).setNumberInCart(qty);
+                    constant.cartItems.get(constant.cartItems.size() - 1).setQty(qty);
                     Intent intent = new Intent(DishDetails.this, Cart.class);
                     startActivity(intent);
                 }
@@ -102,8 +101,8 @@ public class DishDetails extends AppCompatActivity implements Serializable {
             }
         }
         if(filteredItem != null){
-            qty = filteredItem.getNumberInCart();
-            countLabel.setText(String.valueOf(filteredItem.getNumberInCart()));
+            qty = filteredItem.getQty();
+            countLabel.setText(String.valueOf(filteredItem.getQty()));
         }else{
             qty = 0;
             countLabel.setText("0");

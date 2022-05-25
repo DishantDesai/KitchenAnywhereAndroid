@@ -2,26 +2,20 @@ package com.kitchen_anywhere.kitchen_anywhere;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.RadioButton;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.DocumentReference;
@@ -31,15 +25,12 @@ import com.google.firebase.storage.StorageReference;
 import com.kitchen_anywhere.kitchen_anywhere.Interface.ChangeCartItem;
 import com.kitchen_anywhere.kitchen_anywhere.adapter.CartAdapter;
 import com.kitchen_anywhere.kitchen_anywhere.foodie.FoodieHomePage;
-import com.kitchen_anywhere.kitchen_anywhere.foodie.ViewMoreDishes;
 import com.kitchen_anywhere.kitchen_anywhere.helper.constant;
 import com.kitchen_anywhere.kitchen_anywhere.model.FoodModel;
 import com.kitchen_anywhere.kitchen_anywhere.model.OrderModel;
 
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Random;
 
 public class Cart extends AppCompatActivity {
@@ -147,7 +138,7 @@ public class Cart extends AppCompatActivity {
         ArrayList<FoodModel> listfood = (ArrayList<FoodModel>) constant.cartItems;
         double fee = 0;
         for (int i = 0; i < listfood.size(); i++) {
-            fee = fee + (listfood.get(i).getPrice() * listfood.get(i).getNumberInCart());
+            fee = fee + (listfood.get(i).getPrice() * listfood.get(i).getQty());
         }
         return fee;
     }
