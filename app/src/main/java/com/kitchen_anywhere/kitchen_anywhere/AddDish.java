@@ -30,6 +30,7 @@ import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.kitchen_anywhere.kitchen_anywhere.helper.constant;
+import com.kitchen_anywhere.kitchen_anywhere.model.AddFoodModel;
 import com.kitchen_anywhere.kitchen_anywhere.model.FoodModel;
 
 import java.io.IOException;
@@ -189,7 +190,7 @@ public class AddDish extends AppCompatActivity {
 
             databaseReference = firebaseDatabase.getReference("Dish");
 
-            addDataToFirebase(new FoodModel( titleVal.toString(),
+            addDataToFirebase(new AddFoodModel( titleVal.toString(),
                     description.
                             toString(),addDishcusineTypeVal.toString(),
                     Double.parseDouble(addDishPriceVal),
@@ -203,7 +204,7 @@ public class AddDish extends AppCompatActivity {
 
     }
 
-    private void addDataToFirebase(FoodModel food) {
+    private void addDataToFirebase(AddFoodModel food) {
         databaseReference = firebaseDatabase.getReference("Dish");
         fStore = FirebaseFirestore.getInstance();
         DocumentReference documentReference = fStore.collection("Dish").document();

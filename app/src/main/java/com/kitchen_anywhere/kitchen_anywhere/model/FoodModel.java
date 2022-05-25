@@ -5,6 +5,7 @@ import java.util.List;
 
 public class FoodModel implements Serializable
 {
+    private String id;
     private String dishTitle;
     private String description;
     private String typeOfDish;
@@ -19,11 +20,12 @@ public class FoodModel implements Serializable
     private boolean isVegetarian;
     private Double maxLimit ;
     private Double pendingLimit ;
-    private int numberInCart;
-    public FoodModel(String dishTitle, String description, String typeOfDish, Double price, String dishImageLink, int star,
+    private int qty;
+    public FoodModel(String id,String dishTitle, String description, String typeOfDish, Double price, String dishImageLink, int star,
                      String chef_id,List<String> favouriteUserID,int categoryId,
                      Double maxLimit, Double pendingLimit,boolean isActive,boolean isVegetarian,String postal_code
                      ) {
+        this.id = id;
         this.dishTitle = dishTitle;
         this.description = description;
         this.typeOfDish = typeOfDish;
@@ -39,7 +41,9 @@ public class FoodModel implements Serializable
         this.isVegetarian = isVegetarian ;
         this.postal_code = postal_code ;
     }
-
+    public String  getId() {
+        return id;
+    }
 
     public boolean getisVegetarian() {
         return isVegetarian;
@@ -153,9 +157,9 @@ public class FoodModel implements Serializable
         this.star = star;
     }
     public int getNumberInCart() {
-        return numberInCart;
+        return qty;
     }
-    public void setNumberInCart(int numberInCart) {
-        this.numberInCart = numberInCart;
+    public void setNumberInCart(int qty) {
+        this.qty = qty;
     }
 }
