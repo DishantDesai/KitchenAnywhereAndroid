@@ -40,6 +40,7 @@ import com.kitchen_anywhere.kitchen_anywhere.Cart;
 import com.kitchen_anywhere.kitchen_anywhere.DishDetails;
 import com.kitchen_anywhere.kitchen_anywhere.R;
 import com.kitchen_anywhere.kitchen_anywhere.adapter.FoodAdapter;
+import com.kitchen_anywhere.kitchen_anywhere.chef.ChefOrderPage;
 import com.kitchen_anywhere.kitchen_anywhere.helper.constant;
 import com.kitchen_anywhere.kitchen_anywhere.interfaces.redirection;
 import com.kitchen_anywhere.kitchen_anywhere.model.FoodModel;
@@ -82,8 +83,9 @@ public class FoodieHomePageFragment extends Fragment implements redirection {
             @Override
             public void onClick(View view) {
                 System.out.println("call view more");
-                Intent intent = new Intent(getActivity(), ViewMoreDishes.class);
-                startActivity(intent);
+//                Intent intent = new Intent(getActivity(), ViewMoreDishes.class);
+                Intent intent = new Intent(getActivity(), ChefOrderPage.class);
+                   startActivity(intent);
 //                getActivity().finish();
             }
         });

@@ -8,6 +8,7 @@ import android.os.Bundle;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.kitchen_anywhere.kitchen_anywhere.chef.ChefHomePage;
+import com.kitchen_anywhere.kitchen_anywhere.chef.ChefOrderPage;
 
 public class MainActivity extends AppCompatActivity {
     FirebaseAuth mAuth;
@@ -26,5 +27,6 @@ public class MainActivity extends AppCompatActivity {
         if (user == null){
             startActivity(new Intent(MainActivity.this, ChefHomePage.class));
         }
+
     }
 }

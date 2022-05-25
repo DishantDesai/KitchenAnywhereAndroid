@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="20dp"
+        app:cardElevation="10dp"
+        app:cardMaxElevation="12dp"
+        app:cardPreventCornerOverlap="true"
+        app:cardUseCompatPadding="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="#Order id: "
+            android:id="@+id/lblOrderId"
+            android:layout_marginLeft="10dp"
+            android:textStyle="bold"
+            android:layout_marginTop="10dp">
+        </TextView>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/txt_order_id"
+            android:text="DCGGGGDDDERRTG123DF"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="90dp"
+            android:layout_toRightOf="@id/lblOrderId"
+            android:textColor="@color/grey_font"
+            ></TextView>
+
+        <!--   Order Date  -->
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="#Order Date: "
+            android:id="@+id/lblOrderDate"
+            android:layout_marginLeft="10dp"
+            android:textStyle="bold"
+            android:layout_marginTop="30dp">
+        </TextView>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/txt_order_date"
+            android:text="May 19, 2022 at 9:35:26 AM"
+            android:layout_marginTop="30dp"
+            android:layout_marginLeft="100dp"
+            android:layout_toRightOf="@id/lblOrderId"
+            android:textColor="@color/grey_font"
+            ></TextView>
+
+<RelativeLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:id="@+id/relative_layout">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="- Milan Sheladiya -"
+        android:id="@+id/nameOfFoodie"
+        android:layout_marginLeft="10dp"
+        android:textStyle="bold"
+        android:textColor="@color/browser_actions_text_color"
+        android:layout_marginTop="50dp">
+    </TextView>
+
+    <!--   contact of foodie  -->
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="+1 514-661-6768"
+        android:id="@+id/contactOfFoodie"
+        android:layout_marginRight="10dp"
+        android:textStyle="bold"
+        android:textColor="@color/purple_700"
+        android:textAlignment="viewEnd"
+        android:layout_alignStart="@+id/nameOfFoodie"
+        android:layout_marginTop="50dp">
+    </TextView>
+
+
+
+</RelativeLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="pandding"
+            android:id="@+id/txt_order_status"
+            android:layout_marginTop="70dp"
+            android:textColor="@color/custom_green"
+            android:textStyle="italic"
+            android:textAlignment="center"
+            ></TextView>
+
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="90dp"
+            android:id="@+id/chefOrderChildRecycleView"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager">
+
+        </androidx.recyclerview.widget.RecyclerView>
+
+
+
+    </androidx.cardview.widget.CardView>
+
+</LinearLayout>

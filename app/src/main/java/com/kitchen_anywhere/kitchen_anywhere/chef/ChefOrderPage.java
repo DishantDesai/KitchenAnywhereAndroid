@@ -2,6 +2,8 @@ package com.kitchen_anywhere.kitchen_anywhere.chef;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 
@@ -12,6 +14,8 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.kitchen_anywhere.kitchen_anywhere.R;
+import com.kitchen_anywhere.kitchen_anywhere.adapter.ChefOrderAdapter;
+import com.kitchen_anywhere.kitchen_anywhere.adapter.ChefOrderSectionAdapter;
 import com.kitchen_anywhere.kitchen_anywhere.helper.constant;
 import com.kitchen_anywhere.kitchen_anywhere.model.FoodModel;
 import com.kitchen_anywhere.kitchen_anywhere.model.OrderModel;
@@ -23,12 +27,21 @@ import java.util.List;
 
 public class ChefOrderPage extends AppCompatActivity {
 
+    RecyclerView recyclerView;
+    ChefOrderSectionAdapter chefOrderSectionAdapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chef_order_page);
 
         getOrderData();
+
+        System.out.println("-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^" + constant.allorderdata.size());
+
+
+        System.out.println("-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^22222^^");
+
     }
 
     void getOrderData()
@@ -63,6 +76,18 @@ public class ChefOrderPage extends AppCompatActivity {
                                         ));
                                     }
                                     constant.allorderdata = orderlist;
+
+
+                                    //getting the recyclerview from xml
+                                    recyclerView = (RecyclerView) findViewById(R.id.recycle_chef_order);
+                                    recyclerView.setHasFixedSize(true);
+                                    recyclerView.setLayoutManager(new LinearLayoutManager(ChefOrderPage.this));
+//
+//                                  //creating recyclerview adapter
+                                    chefOrderSectionAdapter = new ChefOrderSectionAdapter(ChefOrderPage.this,constant.allorderdata);
+                                    recyclerView.setAdapter(chefOrderSectionAdapter);
+//                                    chefOrderSectionAdapter.updateOrder(constant.allorderdata);
+
 
                                 }
                             }
