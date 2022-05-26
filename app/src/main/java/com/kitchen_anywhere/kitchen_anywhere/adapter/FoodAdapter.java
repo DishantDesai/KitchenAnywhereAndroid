@@ -15,10 +15,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.kitchen_anywhere.kitchen_anywhere.DishDetails;
+import com.kitchen_anywhere.kitchen_anywhere.helper.constant;
 import com.kitchen_anywhere.kitchen_anywhere.model.FoodModel;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import com.kitchen_anywhere.kitchen_anywhere.R;
@@ -56,8 +58,27 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.ViewHolder> im
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context, DishDetails.class);
+                HashMap<String,Object> food = foodItems.get(position);
+                System.out.println(food);
+                FoodModel dish = new FoodModel( food.get("dishTitle").toString(),
+                                food.get("description").toString(),
+                                food.get("typeOfDish").toString(),
+                                (Double) food.get("price"),
+                                food.get("dishImageLink").toString(),
+                                (int) food.get("star"),
+                                food.get("chef_id").toString(),
+                                new ArrayList<>(),
+                                (int)food.get("categoryId"),
+                                (Double) food.get("maxLimit"),
+                                (Double) food.get("pendingLimit"),
+                                (Boolean) food.get("isActive"),
+                                (Boolean) food.get("isVegetarian"),
+                                constant.CurrentUser.getPostal_code()
+                        )
 
-                intent.putExtra("dish",foodItems.get(position));
+                ;
+
+                intent.putExtra("dish",dish);
                 intent.putExtra("position",position);
 
                 context.startActivity(intent);
