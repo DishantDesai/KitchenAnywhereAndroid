@@ -88,12 +88,12 @@ public class Cart extends AppCompatActivity {
             public void onSuccess(Void aVoid) {
                 startActivity(new Intent(Cart.this, ThankyouScreen.class));
                 constant.cartItems.clear();
-                Toast.makeText(Cart.this, "data added", Toast.LENGTH_SHORT).show();
+                Toast.makeText(Cart.this, "Order Placed", Toast.LENGTH_SHORT).show();
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
-                Toast.makeText(Cart.this, "Fail to add data " + e, Toast.LENGTH_SHORT).show();
+                Toast.makeText(Cart.this, "Fail to placed order!Try after sometime " + e, Toast.LENGTH_SHORT).show();
             }
         });
     }

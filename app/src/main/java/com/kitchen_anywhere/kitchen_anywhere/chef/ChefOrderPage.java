@@ -69,6 +69,7 @@ public class ChefOrderPage extends AppCompatActivity {
 
                                             allDish.add(
                                                     new FoodModel(
+                                                            f.get("id").toString(),
                                                             f.get("dishTitle").toString(),f.get("description").toString(),
                                                             f.get("typeOfDish").toString(),
                                                             Double.parseDouble(f.get("price").toString()),
