@@ -20,10 +20,10 @@ import java.util.List;
 
 public class ChefOrderSectionAdapter extends RecyclerView.Adapter<ChefOrderSectionAdapter.ChefOrderSectionViewHolder>{
 
-    ArrayList<OrderModel> orderItems;
+    List<OrderModel> orderItems;
     private Activity context;
 
-    public ChefOrderSectionAdapter (Activity context,ArrayList<OrderModel> orderItems) {
+    public ChefOrderSectionAdapter (Activity context, List<OrderModel> orderItems) {
         this.orderItems = orderItems;
         this.context = context;
         System.out.println("------call constructor");

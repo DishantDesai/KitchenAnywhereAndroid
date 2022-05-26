@@ -140,7 +140,7 @@ public class Cart extends AppCompatActivity {
         ArrayList<FoodModel> listfood = (ArrayList<FoodModel>) constant.cartItems;
         double fee = 0;
         for (int i = 0; i < listfood.size(); i++) {
-            fee = fee + (listfood.get(i).getPrice() * listfood.get(i).getNumberInCart());
+            fee = fee + (listfood.get(i).getPrice() * listfood.get(i).getqty());
         }
         return fee;
     }

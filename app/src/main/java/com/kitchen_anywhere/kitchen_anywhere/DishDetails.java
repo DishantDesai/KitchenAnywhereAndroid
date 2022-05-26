@@ -42,8 +42,8 @@ public class DishDetails extends AppCompatActivity implements Serializable {
             }
         }
         if(constant.cartItems.size() > 0 && filteredItem != null){
-            qty = filteredItem.getNumberInCart();
-            countLabel.setText(String.valueOf(filteredItem.getNumberInCart()));
+            qty = filteredItem.getqty();
+            countLabel.setText(String.valueOf(filteredItem.getqty()));
         }
         incrementQtyBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -68,12 +68,12 @@ public class DishDetails extends AppCompatActivity implements Serializable {
             @Override
             public void onClick(View view) {
                 if(constant.cartItems.size() > 0 && filteredItem != null){
-                    constant.cartItems.get(constant.cartItems.size() - 1).setNumberInCart(qty);
+                    constant.cartItems.get(constant.cartItems.size() - 1).setqty(qty);
                     Intent intent = new Intent(DishDetails.this, Cart.class);
                     startActivity(intent);
                 }else if(qty > 0){
                     constant.cartItems.add(dish);
-                    constant.cartItems.get(constant.cartItems.size() - 1).setNumberInCart(qty);
+                    constant.cartItems.get(constant.cartItems.size() - 1).setqty(qty);
                     Intent intent = new Intent(DishDetails.this, Cart.class);
                     startActivity(intent);
                 }
@@ -90,7 +90,7 @@ public class DishDetails extends AppCompatActivity implements Serializable {
         titleView.setText(dish.getdishTitle());
         descriptionView.setText(dish.getDescription());
         priceView.setText("$" + dish.getPrice().toString());
-//        countLabel.setText(constant.cartItems.size() > 0 ? String.valueOf(constant.cartItems.get(position).getNumberInCart()): "0");
+//        countLabel.setText(constant.cartItems.size() > 0 ? String.valueOf(constant.cartItems.get(position).getqty()): "0");
     }
     @Override
     public void onRestart(){
@@ -102,8 +102,8 @@ public class DishDetails extends AppCompatActivity implements Serializable {
             }
         }
         if(filteredItem != null){
-            qty = filteredItem.getNumberInCart();
-            countLabel.setText(String.valueOf(filteredItem.getNumberInCart()));
+            qty = filteredItem.getqty();
+            countLabel.setText(String.valueOf(filteredItem.getqty()));
         }else{
             qty = 0;
             countLabel.setText("0");
@@ -113,6 +113,6 @@ public class DishDetails extends AppCompatActivity implements Serializable {
     }
 //    public void updateCart(int position){
 //        System.out.println("position"+position);
-//        countLabel.setText(constant.cartItems.size() > 0 ? String.valueOf(constant.cartItems.get(position).getNumberInCart()): "0");
+//        countLabel.setText(constant.cartItems.size() > 0 ? String.valueOf(constant.cartItems.get(position).getqty()): "0");
 //    }
 }

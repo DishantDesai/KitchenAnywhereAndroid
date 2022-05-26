@@ -17,6 +17,7 @@ import com.kitchen_anywhere.kitchen_anywhere.model.FoodModel;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 public class ChefOrderAdapter extends RecyclerView.Adapter<ChefOrderAdapter.ChefOrderViewHolder>{
 
@@ -41,18 +42,17 @@ public class ChefOrderAdapter extends RecyclerView.Adapter<ChefOrderAdapter.Chef
     public void onBindViewHolder(@NonNull ChefOrderViewHolder holder, int position) {
         //getting the product of the specified position
         System.out.println(position);
-        ArrayList<FoodModel> temp = foodItems;
-        HashMap<String,Object> food = foodItems.get(position);
+        List<FoodModel> food = (List<FoodModel>) foodItems;
         //binding the data with the viewholder views
 //        System.out.println(foodItems.get(position).toString());
 
 
 
-        holder.txtTitle.setText(String.valueOf(food.get("dishTitle")));
-        holder.txtQty.setText(String.valueOf(food.get("qty")));
-        holder.txtPrice.setText(String.valueOf(food.get("price")));
+        holder.txtTitle.setText(foodItems.get(position).getdishTitle());
+        holder.txtQty.setText("1");
+        holder.txtPrice.setText(foodItems.get(position).getPrice().toString());
         Glide.with(holder.itemView.getContext())
-                .load(String.valueOf(food.get("dishImageLink")))
+                .load(foodItems.get(position).getdishImageLink())
                 .into(holder.img);
 //        holder.img.setImageDrawable(this.context.getResources().getDrawable(food.getdishImageLink()));
 
@@ -72,7 +72,7 @@ public class ChefOrderAdapter extends RecyclerView.Adapter<ChefOrderAdapter.Chef
             super(itemView);
             img = itemView.findViewById(R.id.dishImageLink);
             txtTitle = itemView.findViewById(R.id.dishTitle);
-            txtQty = itemView.findViewById(R.id.numberInCart);
+            txtQty = itemView.findViewById(R.id.qty);
             txtPrice = itemView.findViewById(R.id.price);
         }
     }

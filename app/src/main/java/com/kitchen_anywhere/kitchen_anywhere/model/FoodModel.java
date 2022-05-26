@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.HashMap;
 import java.util.List;
 
-public class FoodModel extends HashMap<String, Object> implements Serializable
+public class FoodModel implements Serializable
 {
     private String dishTitle;
     private String description;
@@ -20,7 +20,7 @@ public class FoodModel extends HashMap<String, Object> implements Serializable
     private boolean isVegetarian;
     private Double maxLimit ;
     private Double pendingLimit ;
-    private int numberInCart;
+    private int qty;
     public FoodModel(String dishTitle, String description, String typeOfDish, Double price, String dishImageLink, int star,
                      String chef_id,List<String> favouriteUserID,int categoryId,
                      Double maxLimit, Double pendingLimit,boolean isActive,boolean isVegetarian,String postal_code
@@ -153,10 +153,10 @@ public class FoodModel extends HashMap<String, Object> implements Serializable
     public void setStar(int star) {
         this.star = star;
     }
-    public int getNumberInCart() {
-        return numberInCart;
+    public int getqty() {
+        return qty;
     }
-    public void setNumberInCart(int numberInCart) {
-        this.numberInCart = numberInCart;
+    public void setqty(int qty) {
+        this.qty = qty;
     }
 }

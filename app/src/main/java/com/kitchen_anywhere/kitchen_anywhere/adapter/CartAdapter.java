@@ -39,15 +39,15 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.title.setText(cartItems.get(position).getdishTitle());
         holder.feeEachItem.setText("$" + String.valueOf(cartItems.get(position).getPrice()));
-        holder.totalEachItem.setText("$" +String.valueOf(Math.round((cartItems.get(position).getNumberInCart() * cartItems.get(position).getPrice()) * 100) / 100));
-        holder.num.setText(String.valueOf(cartItems.get(position).getNumberInCart()));
+        holder.totalEachItem.setText("$" +String.valueOf(Math.round((cartItems.get(position).getqty() * cartItems.get(position).getPrice()) * 100) / 100));
+        holder.num.setText(String.valueOf(cartItems.get(position).getqty()));
         Glide.with(holder.itemView.getContext())
                 .load(cartItems.get(position).getdishImageLink())
                 .into(holder.pic);
         holder.plusItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                cartItems.get(position).setNumberInCart(cartItems.get(position).getNumberInCart() + 1);
+                cartItems.get(position).setqty(cartItems.get(position).getqty() + 1);
                 notifyDataSetChanged();
                 changeCartItem.changed();
             }
@@ -55,8 +55,8 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
         holder.minusItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(cartItems.get(position).getNumberInCart() > 0){
-                    cartItems.get(position).setNumberInCart(cartItems.get(position).getNumberInCart() - 1);
+                if(cartItems.get(position).getqty() > 0){
+                    cartItems.get(position).setqty(cartItems.get(position).getqty() - 1);
                     notifyDataSetChanged();
                     changeCartItem.changed();
                 }

@@ -44,7 +44,7 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/numberInCart"
+                android:id="@+id/qty"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/lblQty"
@@ -78,7 +78,7 @@
                 android:layout_below="@id/lblPrice"
                 android:layout_marginLeft="125dp"
                 android:layout_marginTop="5dp"
-                android:layout_toRightOf="@id/numberInCart"
+                android:layout_toRightOf="@id/qty"
                 android:text="10"
                 android:textColor="@color/purple_700"
                 android:textStyle="bold"
@@ -89,7 +89,7 @@
 <!--                android:id="@+id/textViewRating"-->
 <!--                android:layout_width="wrap_content"-->
 <!--                android:layout_height="wrap_content"-->
-<!--                android:layout_below="@id/numberInCart"-->
+<!--                android:layout_below="@id/qty"-->
 <!--                android:layout_marginLeft="5dp"-->
 <!--                android:layout_marginTop="5dp"-->
 <!--                android:layout_toRightOf="@id/dishImageLink"-->
