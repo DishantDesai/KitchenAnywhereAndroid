@@ -2,6 +2,8 @@ package com.kitchen_anywhere.kitchen_anywhere.foodie;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.view.View;
@@ -13,7 +15,9 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.kitchen_anywhere.kitchen_anywhere.R;
+import com.kitchen_anywhere.kitchen_anywhere.adapter.ChefOrderSectionAdapter;
 import com.kitchen_anywhere.kitchen_anywhere.adapter.FoodAdapter;
+import com.kitchen_anywhere.kitchen_anywhere.chef.ChefOrderPage;
 import com.kitchen_anywhere.kitchen_anywhere.helper.constant;
 import com.kitchen_anywhere.kitchen_anywhere.model.FoodModel;
 import com.kitchen_anywhere.kitchen_anywhere.model.OrderModel;
@@ -28,6 +32,9 @@ import java.util.List;
 
 public class FoodieOrderPage extends AppCompatActivity {
 
+    RecyclerView recyclerView;
+    private ChefOrderSectionAdapter chefOrderSectionAdapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,6 +45,9 @@ public class FoodieOrderPage extends AppCompatActivity {
 
     void getOrderData()
     {
+
+        recyclerView = (RecyclerView) findViewById(R.id.recycle_chef_order);
+
         ArrayList<OrderModel> orderlist = new ArrayList<>();
         FirebaseFirestore.getInstance().collection("Order").whereEqualTo("userId",constant.CurrentUser.getUserID()).get().
 
@@ -68,6 +78,12 @@ public class FoodieOrderPage extends AppCompatActivity {
                                         ));
                             }
                             constant.allorderdata = orderlist;
+
+                            recyclerView.setLayoutManager(new LinearLayoutManager(FoodieOrderPage.this));
+//
+//                                  //creating recyclerview adapter
+                            chefOrderSectionAdapter = new ChefOrderSectionAdapter(FoodieOrderPage.this,constant.allorderdata);
+                            recyclerView.setAdapter(chefOrderSectionAdapter);
 
                         }
                     }
