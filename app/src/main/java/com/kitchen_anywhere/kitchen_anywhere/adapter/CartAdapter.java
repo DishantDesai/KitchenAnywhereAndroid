@@ -27,6 +27,10 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
         this.cartItems = cartItems;
         this.changeCartItem = changeCartItem;
     }
+    public void resetCart(ArrayList<FoodModel> cartItems){
+        this.cartItems = cartItems;
+        notifyDataSetChanged();
+    }
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {

@@ -2,8 +2,6 @@ package com.kitchen_anywhere.kitchen_anywhere.foodie;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.view.View;
@@ -17,10 +15,11 @@ import com.google.firebase.firestore.QuerySnapshot;
 import com.kitchen_anywhere.kitchen_anywhere.R;
 import com.kitchen_anywhere.kitchen_anywhere.adapter.ChefOrderSectionAdapter;
 import com.kitchen_anywhere.kitchen_anywhere.adapter.FoodAdapter;
-import com.kitchen_anywhere.kitchen_anywhere.chef.ChefOrderPage;
 import com.kitchen_anywhere.kitchen_anywhere.helper.constant;
 import com.kitchen_anywhere.kitchen_anywhere.model.FoodModel;
 import com.kitchen_anywhere.kitchen_anywhere.model.OrderModel;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -57,12 +56,12 @@ public class FoodieOrderPage extends AppCompatActivity {
 
                             List<OrderModel> orderlist = new ArrayList<>();
                             List<HashMap<String,Object>> foodlist = new ArrayList<>();
-
                             for(QueryDocumentSnapshot doc : task.getResult())
                             {
                                 HashMap<String, String> map = new HashMap<String, String>();
                                 Timestamp t= (Timestamp) doc.getData().get("orderDate");
                                 Date d = t.toDate();
+
                                 foodlist = (List<HashMap<String, Object>>) doc.getData().get("dishList");
 
 
@@ -90,8 +89,6 @@ public class FoodieOrderPage extends AppCompatActivity {
                                     );
 
                                 }
-
-
                                 orderlist.add(new OrderModel(doc.getData().get("chefId").toString(),
                                         doc.getData().get("contactOfFoodie").toString(),allDish,
                                         doc.getData().get("nameOfFoodie").toString(),
@@ -100,12 +97,9 @@ public class FoodieOrderPage extends AppCompatActivity {
                                         doc.getData().get("orderStatus").toString(),
                                         doc.getData().get("userId").toString()
                                 ));
-
                                 constant.allorderdata = new ArrayList<>();
                                 constant.allorderdata.addAll(orderlist);
                             }
-
-
                             recyclerView.setLayoutManager(new LinearLayoutManager(FoodieOrderPage.this));
 //
 //                                  //creating recyclerview adapter
