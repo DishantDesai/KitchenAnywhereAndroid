@@ -59,7 +59,13 @@ public class ViewMoreDishes extends AppCompatActivity {
     private void getDish() {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false);
         recyclerViewDishList.setLayoutManager(linearLayoutManager);
-        dishAdapter = new ViewMoreAdapter((ArrayList<FoodModel>) constant.alldishdata,this);
+        if(constant.Matchdishdata.size() == 0) {
+            dishAdapter = new ViewMoreAdapter((ArrayList<FoodModel>) constant.alldishdata, this);
+        }
+        else
+        {
+            dishAdapter = new ViewMoreAdapter((ArrayList<FoodModel>) constant.Matchdishdata, this);
+        }
         recyclerViewDishList.setAdapter(dishAdapter);
     }
     private void filterList(String newText){

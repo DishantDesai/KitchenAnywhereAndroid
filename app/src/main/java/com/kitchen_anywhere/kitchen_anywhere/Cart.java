@@ -34,7 +34,7 @@ import java.util.Date;
 import java.util.Random;
 
 public class Cart extends AppCompatActivity {
-    private RecyclerView.Adapter adapter;
+    private CartAdapter adapter;
     private RecyclerView recyclerViewList;
     TextView totalAmount,cartTotalAmt,taxAmt,startShopping;
     Button checkout_btn;
@@ -86,6 +86,8 @@ public class Cart extends AppCompatActivity {
         documentReference.set(order).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void aVoid) {
+                startActivity(new Intent(Cart.this, ThankyouScreen.class));
+                constant.cartItems.clear();
                 Toast.makeText(Cart.this, "data added", Toast.LENGTH_SHORT).show();
             }
         }).addOnFailureListener(new OnFailureListener() {
@@ -143,7 +145,6 @@ public class Cart extends AppCompatActivity {
         return fee;
     }
     private void CalculateCart() {
-        System.out.println("Call for update");
         if(constant.cartItems.size() == 0){
             cartItems.setVisibility(View.INVISIBLE);
             emptyCart.setVisibility(View.VISIBLE);
@@ -156,5 +157,12 @@ public class Cart extends AppCompatActivity {
         cartTotalAmt.setText("$" + itemTotal);
         taxAmt.setText("$" + tax);
         totalAmount.setText("$" + total);
+    }
+
+    @Override
+    protected void onRestart() {
+        adapter.resetCart((ArrayList<FoodModel>) constant.cartItems);
+        initList();
+        super.onRestart();
     }
 }

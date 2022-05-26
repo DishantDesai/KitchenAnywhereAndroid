@@ -1,6 +1,7 @@
 package com.kitchen_anywhere.kitchen_anywhere.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -45,8 +46,8 @@ public class OrderModel implements Serializable
         this.contactOfFoodie = contactOfFoodie;
     }
 
-    public List<FoodModel> getdishList() {
-        return dishList;
+    public ArrayList<FoodModel> getdishList() {
+        return (ArrayList<FoodModel>) dishList;
     }
 
     public void setdishList(List<FoodModel> dishList) {

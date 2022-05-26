@@ -89,7 +89,7 @@ public class DishDetails extends AppCompatActivity implements Serializable {
         titleView.setText(dish.getdishTitle());
         descriptionView.setText(dish.getDescription());
         priceView.setText("$" + dish.getPrice().toString());
-//        countLabel.setText(constant.cartItems.size() > 0 ? String.valueOf(constant.cartItems.get(position).getNumberInCart()): "0");
+//        countLabel.setText(constant.cartItems.size() > 0 ? String.valueOf(constant.cartItems.get(position).getqty()): "0");
     }
     @Override
     public void onRestart(){
@@ -112,6 +112,6 @@ public class DishDetails extends AppCompatActivity implements Serializable {
     }
 //    public void updateCart(int position){
 //        System.out.println("position"+position);
-//        countLabel.setText(constant.cartItems.size() > 0 ? String.valueOf(constant.cartItems.get(position).getNumberInCart()): "0");
+//        countLabel.setText(constant.cartItems.size() > 0 ? String.valueOf(constant.cartItems.get(position).getqty()): "0");
 //    }
 }
