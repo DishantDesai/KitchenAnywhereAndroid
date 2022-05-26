@@ -2,26 +2,20 @@ package com.kitchen_anywhere.kitchen_anywhere;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.RadioButton;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.DocumentReference;
@@ -31,19 +25,16 @@ import com.google.firebase.storage.StorageReference;
 import com.kitchen_anywhere.kitchen_anywhere.Interface.ChangeCartItem;
 import com.kitchen_anywhere.kitchen_anywhere.adapter.CartAdapter;
 import com.kitchen_anywhere.kitchen_anywhere.foodie.FoodieHomePage;
-import com.kitchen_anywhere.kitchen_anywhere.foodie.ViewMoreDishes;
 import com.kitchen_anywhere.kitchen_anywhere.helper.constant;
 import com.kitchen_anywhere.kitchen_anywhere.model.FoodModel;
 import com.kitchen_anywhere.kitchen_anywhere.model.OrderModel;
 
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Random;
 
 public class Cart extends AppCompatActivity {
-    private RecyclerView.Adapter adapter;
+    private CartAdapter adapter;
     private RecyclerView recyclerViewList;
     TextView totalAmount,cartTotalAmt,taxAmt,startShopping;
     Button checkout_btn;
@@ -95,12 +86,14 @@ public class Cart extends AppCompatActivity {
         documentReference.set(order).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void aVoid) {
-                Toast.makeText(Cart.this, "data added", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(Cart.this, ThankyouScreen.class));
+                constant.cartItems.clear();
+                Toast.makeText(Cart.this, "Order Placed", Toast.LENGTH_SHORT).show();
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
-                Toast.makeText(Cart.this, "Fail to add data " + e, Toast.LENGTH_SHORT).show();
+                Toast.makeText(Cart.this, "Fail to placed order!Try after sometime " + e, Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -147,12 +140,11 @@ public class Cart extends AppCompatActivity {
         ArrayList<FoodModel> listfood = (ArrayList<FoodModel>) constant.cartItems;
         double fee = 0;
         for (int i = 0; i < listfood.size(); i++) {
-            fee = fee + (listfood.get(i).getPrice() * listfood.get(i).getNumberInCart());
+            fee = fee + (listfood.get(i).getPrice() * listfood.get(i).getQty());
         }
         return fee;
     }
     private void CalculateCart() {
-        System.out.println("Call for update");
         if(constant.cartItems.size() == 0){
             cartItems.setVisibility(View.INVISIBLE);
             emptyCart.setVisibility(View.VISIBLE);
@@ -165,5 +157,12 @@ public class Cart extends AppCompatActivity {
         cartTotalAmt.setText("$" + itemTotal);
         taxAmt.setText("$" + tax);
         totalAmount.setText("$" + total);
+    }
+
+    @Override
+    protected void onRestart() {
+        adapter.resetCart((ArrayList<FoodModel>) constant.cartItems);
+        initList();
+        super.onRestart();
     }
 }

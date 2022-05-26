@@ -7,13 +7,16 @@
     <application
         android:allowBackup="true"
         android:hardwareAccelerated="true"
-        android:largeHeap="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:largeHeap="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:usesCleartextTraffic="true"
-        android:theme="@style/Theme.KitchenAnywhereAndroid">
+        android:theme="@style/Theme.KitchenAnywhereAndroid"
+        android:usesCleartextTraffic="true">
+        <activity
+            android:name=".ThankyouScreen"
+            android:exported="false" />
         <activity
             android:name=".foodie.ViewMoreDishes"
             android:exported="false" />

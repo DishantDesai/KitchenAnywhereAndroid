@@ -1,6 +1,7 @@
 package com.kitchen_anywhere.kitchen_anywhere.model;
 
 import java.io.Serializable;
+import java.util.HashMap;
 import java.util.List;
 
 public class FoodModel implements Serializable
@@ -156,10 +157,10 @@ public class FoodModel implements Serializable
     public void setStar(int star) {
         this.star = star;
     }
-    public int getNumberInCart() {
+    public int getQty() {
         return qty;
     }
-    public void setNumberInCart(int qty) {
+    public void setQty(int qty) {
         this.qty = qty;
     }
 }
