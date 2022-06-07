@@ -80,7 +80,7 @@ public class Signup extends AppCompatActivity {
             return true;
         }
     }
-    private Boolean isEmailValid(){
+    Boolean isEmailValid(){
         String emailVal= email.getEditText().getText().toString();
         String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
         if(emailVal.isEmpty()){

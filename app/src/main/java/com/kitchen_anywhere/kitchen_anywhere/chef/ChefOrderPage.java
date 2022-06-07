@@ -39,7 +39,7 @@ public class ChefOrderPage extends AppCompatActivity {
 
     void getOrderData()
     {
-        recyclerView = (RecyclerView) findViewById(R.id.recycle_chef_order);
+         
 
         FirebaseFirestore.getInstance().collection("Order").whereEqualTo("chefId", constant.CurrentUser.getUserID()).get().
 
