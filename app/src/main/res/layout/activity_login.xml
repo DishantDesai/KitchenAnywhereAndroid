@@ -19,7 +19,7 @@
         app:srcCompat="@drawable/splash_logo" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/welcome"
         android:layout_width="match_parent"
         android:layout_height="25dp"
         android:text="Welcome"
