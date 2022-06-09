@@ -7,7 +7,7 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
+        android:layout_margin="0dp"
         app:cardBackgroundColor="@color/white"
         app:cardCornerRadius="20dp"
         app:cardElevation="10dp"
@@ -30,12 +30,12 @@
 
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/txt_order_id"
             android:text="DCGGGGDDDERRTG123DF"
             android:layout_marginTop="10dp"
-            android:layout_marginLeft="90dp"
+            android:layout_marginLeft="75dp"
             android:layout_toRightOf="@id/lblOrderId"
             android:textColor="@color/grey_font"
             ></TextView>
@@ -54,12 +54,12 @@
 
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/txt_order_date"
             android:text="May 19, 2022 at 9:35:26 AM"
             android:layout_marginTop="30dp"
-            android:layout_marginLeft="100dp"
+            android:layout_marginLeft="90dp"
             android:layout_toRightOf="@id/lblOrderId"
             android:textColor="@color/grey_font"
             ></TextView>

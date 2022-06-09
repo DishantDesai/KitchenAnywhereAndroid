@@ -25,7 +25,7 @@ public class PostalApIController {
 
         this.postalCode = postalCode;
         System.out.println("------------------- first --------------");
-        URL = "https://www.zipcodeapi.com/rest/v2/CA/jmI3O8GIUgsjpx3tew3vdxx3tJENxNYdFLi8LdD7MZbZf0FE5ORTEWD7W2BpD9ki/radius.json/"+this.postalCode+"/0.2/km";
+        URL = "https://www.zipcodeapi.com/rest/v2/CA/yQRfaPCULMR42Uk6mp2QSWGggGrb9FR0vStkqhdFxHnmhbs8ZQ9Lv9dEZLPmkjcW/radius.json/"+this.postalCode+"/0.2/km";
 System.out.println(URL);
         postalList = new ArrayList<PostalCode>();
 
